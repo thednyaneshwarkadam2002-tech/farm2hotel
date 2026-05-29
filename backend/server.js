@@ -382,7 +382,7 @@ console.log(
 // ======================
 
 const PORT =
-5000;
+process.env.PORT || 5000;
 
 server.listen(
 

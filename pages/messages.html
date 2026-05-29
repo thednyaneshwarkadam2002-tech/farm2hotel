@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width, initial-scale=1.0">
+
+<title>
+Messages | Farm2Hotel
+</title>
+
+<link
+href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link
+href=
+"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:
+'Poppins',
+sans-serif;
+}
+
+body{
+margin:0;
+overflow:hidden;
+}
+
+.dashboard-wrapper{
+display:flex;
+height:100vh;
+}
+
+/* MAIN */
+
+.message-wrapper{
+
+display:flex;
+
+height:100vh;
+
+}
+
+/* LEFT */
+
+.chat-sidebar{
+
+width:360px;
+
+background:#fff;
+
+border-right:
+1px solid #eee;
+
+display:flex;
+flex-direction:column;
+
+}
+
+.chat-header{
+
+padding:25px;
+
+border-bottom:
+1px solid #eee;
+
+}
+
+.chat-header h2{
+
+font-size:28px;
+font-weight:700;
+
+margin-bottom:15px;
+
+}
+
+.search-box{
+
+position:relative;
+
+}
+
+.search-box i{
+
+position:absolute;
+
+left:18px;
+top:50%;
+
+transform:
+translateY(-50%);
+
+color:#888;
+
+}
+
+.search-box input{
+
+width:100%;
+
+padding:
+15px
+18px
+15px
+50px;
+
+border:none;
+outline:none;
+
+background:
+#f4f7fb;
+
+border-radius:18px;
+
+}
+
+/* CHAT USERS */
+
+.chat-users{
+
+overflow-y:auto;
+flex:1;
+
+padding:18px;
+
+}
+
+.user-card{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+padding:16px;
+
+border-radius:22px;
+
+cursor:pointer;
+
+transition:.3s;
+
+margin-bottom:12px;
+
+}
+
+.user-card:hover,
+.user-card.active{
+
+background:
+#eefaf2;
+
+}
+
+.user-card img{
+
+width:60px;
+height:60px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+}
+
+.user-info{
+
+flex:1;
+
+}
+
+.user-info h5{
+
+margin:0;
+font-size:18px;
+font-weight:600;
+
+}
+
+.user-info p{
+
+margin:0;
+font-size:14px;
+color:#777;
+
+}
+
+.unread-badge{
+
+background:
+#198754;
+
+color:#fff;
+
+width:26px;
+height:26px;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:13px;
+font-weight:600;
+
+}
+
+/* RIGHT */
+
+/* RIGHT CHAT SECTION */
+
+.chat-section{
+flex:1;
+display:flex;
+flex-direction:column;
+height:100vh;
+background:#eef1f5;
+overflow:hidden;
+}
+
+/* TOP HEADER */
+
+.chat-top{
+height:90px;
+background:#fff;
+padding:20px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #e8e8e8;
+flex-shrink:0;
+}
+
+.chat-user{
+display:flex;
+align-items:center;
+gap:16px;
+}
+
+.chat-user img{
+width:58px;
+height:58px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.chat-user h4{
+margin:0;
+font-size:20px;
+font-weight:700;
+}
+
+.online{
+font-size:14px;
+color:#198754;
+margin:0;
+}
+
+/* CHAT BODY */
+
+.chat-body{
+flex:1;
+padding:30px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:18px;
+
+/* HE ADD KAR */
+justify-content:flex-end;
+}
+/* MESSAGE BOX */
+
+.message{
+max-width:380px;
+padding:16px 22px;
+border-radius:24px;
+font-size:15px;
+word-wrap:break-word;
+margin:0;
+}
+
+/* RECEIVED MESSAGE */
+
+.received{
+background:#fff;
+align-self:flex-start;
+box-shadow:0 2px 10px rgba(0,0,0,.06);
+border-top-left-radius:8px;
+}
+
+/* SENT MESSAGE */
+
+.sent{
+background:#198754;
+color:#fff;
+align-self:flex-end;
+border-top-right-radius:8px;
+}
+
+/* INPUT SECTION */
+
+.chat-input{
+background:#fff;
+padding:15px 18px;
+display:flex;
+align-items:center;
+gap:15px;
+border-top:1px solid #eee;
+flex-shrink:0;
+}
+
+/* INPUT FIELD */
+
+.chat-input input{
+flex:1;
+height:58px;
+border:none;
+outline:none;
+background:#f3f5f8;
+padding:0 22px;
+border-radius:18px;
+font-size:16px;
+}
+
+/* SEND BUTTON */
+
+.send-btn{
+width:58px;
+height:58px;
+border:none;
+border-radius:18px;
+background:#198754;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-shrink:0;
+}
+/* MOBILE */
+
+@media(max-width:992px){
+
+.chat-sidebar{
+
+width:100%;
+
+}
+
+.chat-section{
+
+display:none;
+
+}
+
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+width:280px;
+
+background:
+linear-gradient(
+180deg,
+#198754,
+#0f5132
+);
+
+color:#fff;
+
+padding:30px 20px;
+
+position:fixed;
+
+left:0;
+top:0;
+
+height:100vh;
+
+overflow-y:auto;
+
+z-index:999;
+
+}
+
+.logo-box{
+margin-bottom:40px;
+}
+
+.logo-box h2{
+font-weight:700;
+font-size:32px;
+color:#fff;
+}
+
+.logo-box p{
+opacity:.8;
+margin-top:8px;
+color:#fff;
+}
+
+.sidebar-menu{
+list-style:none;
+padding:0;
+}
+
+.sidebar-menu li{
+margin-bottom:12px;
+}
+
+.sidebar-menu a{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+padding:16px 18px;
+
+border-radius:18px;
+
+color:#fff;
+
+transition:.3s;
+
+font-size:16px;
+font-weight:500;
+
+}
+
+.sidebar-menu a:hover{
+
+background:
+rgba(255,255,255,.15);
+
+}
+
+.sidebar-menu i{
+font-size:18px;
+}
+
+
+/* PAGE LAYOUT */
+
+.dashboard-wrapper{
+display:flex;
+}
+
+.main-content{
+
+margin-left:280px;
+
+width:calc(100% - 280px);
+
+height:100vh;
+
+display:flex;
+
+overflow:hidden;
+
+}
+.message-wrapper{
+display:flex;
+width:100%;
+height:100vh;
+}
+
+</style>
+
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+
+    <!-- SIDEBAR -->
+    PASTE SIDEBAR HERE
+
+    
+<aside class="sidebar">
+
+<div class="logo-box">
+
+<h2>
+🌱 Farm2Hotel
+</h2>
+
+<p>
+Farmer Dashboard
+</p>
+
+</div>
+
+<ul class="sidebar-menu">
+
+<li>
+<a href="farmer-dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+Dashboard
+
+</a>
+</li>
+
+<li>
+<a href="add-vegetables.html">
+
+<i class="fa-solid fa-seedling"></i>
+Add Vegetables
+
+</a>
+</li>
+
+<li>
+<a href="my-listings.html">
+
+<i class="fa-solid fa-box"></i>
+My Listings
+
+</a>
+</li>
+
+<li>
+<a href="farmer-orders.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+
+</a>
+</li>
+
+<li>
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-column"></i>
+Analytics
+
+</a>
+</li>
+
+<li>
+<a href="nearby-hotels.html">
+
+<i class="fa-solid fa-location-dot"></i>
+Nearby Hotels
+
+</a>
+</li>
+
+<li>
+<a href="revenue.html">
+<i class="fa-solid fa-wallet"></i>
+Revenue
+
+</a>
+</li>
+
+<li>
+<a href="messages.html">
+
+<i class="fa-solid fa-message"></i>
+Messages
+
+</a>
+</li>
+
+<li>
+<a href="notifications.html">
+
+<i class="fa-solid fa-bell"></i>
+Notifications
+
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+Profile
+
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="logout()">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+    <main class="main-content">
+
+<div class="message-wrapper">
+
+<!-- LEFT -->
+
+<div class="chat-sidebar">
+
+<div class="chat-header">
+
+<h2>
+Messages 💬
+</h2>
+
+<div class="search-box">
+
+<i class=
+"fa-solid fa-search">
+</i>
+
+<input
+type="text"
+placeholder=
+"Search hotel...">
+
+</div>
+
+</div>
+
+<div
+class="chat-users"
+id="chatUsers">
+
+<!-- JS -->
+
+</div>
+
+</div>
+
+
+<!-- RIGHT -->
+
+<div class="chat-section">
+
+<div class="chat-top">
+
+<div class="chat-user">
+
+<img
+id="chatProfile"
+src=
+"https://ui-avatars.com/api/?name=Hotel">
+
+<div>
+
+<h4
+id="chatName">
+
+Select Hotel
+
+</h4>
+
+<p class="online">
+
+● Online
+
+</p>
+
+</div>
+
+</div>
+
+<i class=
+"fa-solid fa-phone-volume fa-lg text-success">
+</i>
+
+</div>
+
+
+<div
+class="chat-body"
+id="chatBody">
+
+<div class="message received">
+
+Hello Farmer 👋
+
+</div>
+
+<div class="message sent">
+
+Hi, How can I help?
+
+</div>
+
+</div>
+
+
+<div class="chat-input">
+
+<input
+type="text"
+id="messageInput"
+placeholder=
+"Type message...">
+
+<button
+class="send-btn">
+
+<i class=
+"fa-solid fa-paper-plane">
+</i>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+<script>
+
+// ======================
+// LOGIN CHECK
+// ======================
+
+const farmer =
+JSON.parse(
+localStorage.getItem(
+"farmer"
+)
+);
+
+if(!farmer){
+
+window.location.href =
+"./farmer-login.html";
+
+}
+
+let currentBuyerId =
+null;
+
+
+// ======================
+// LOAD BUYERS
+// ======================
+
+async function
+loadBuyers(){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/messages/buyers/${farmer.id}`
+
+);
+
+const buyers =
+await response.json();
+
+let html = "";
+
+if(
+buyers.length === 0
+){
+
+html =
+`
+<div class=
+"text-center p-4">
+
+No Messages Yet ❌
+
+</div>
+`;
+
+}
+
+buyers.forEach(buyer=>{
+
+html +=
+`
+<div
+class=
+"user-card"
+
+onclick=
+"openChat(
+
+${buyer.id},
+
+'${buyer.business_name}'
+
+)">
+
+<img
+src=
+"https://ui-avatars.com/api/?name=${buyer.business_name}&background=198754&color=fff">
+
+<div class=
+"user-info">
+
+<h5>
+
+${buyer.business_name}
+
+</h5>
+
+<p>
+
+Click to open chat
+
+</p>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"chatUsers"
+)
+.innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ======================
+// OPEN CHAT
+// ======================
+
+async function
+openChat(
+
+buyerId,
+buyerName
+
+){
+
+currentBuyerId =
+buyerId;
+
+document
+.getElementById(
+"chatName"
+)
+.innerText =
+buyerName;
+
+document
+.getElementById(
+"chatProfile"
+)
+.src =
+
+`https://ui-avatars.com/api/?name=${buyerName}&background=198754&color=fff`;
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/messages/chat/${farmer.id}/${buyerId}`
+
+);
+
+const chats =
+await response.json();
+
+let html = "";
+
+if(
+chats.length === 0
+){
+
+html =
+`
+<div class=
+"message received">
+
+Start Conversation 👋
+
+</div>
+`;
+
+}
+
+chats.forEach(chat=>{
+
+const type =
+
+chat.sender_type
+=== "Farmer"
+
+?
+
+"sent"
+
+:
+
+"received";
+
+html +=
+`
+<div
+class=
+"message ${type}">
+
+${chat.message}
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"chatBody"
+)
+.innerHTML =
+html;
+
+scrollBottom();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ======================
+// SEND MESSAGE
+// ======================
+
+async function
+sendMessage(){
+
+const input =
+document
+.getElementById(
+"messageInput"
+);
+
+const message =
+input.value.trim();
+
+if(
+!message
+||
+!currentBuyerId
+){
+
+return;
+
+}
+
+try{
+
+const response =
+await fetch(
+
+"http://localhost:5000/api/messages/send",
+
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:
+JSON.stringify({
+
+sender_id:
+farmer.id,
+
+sender_type:
+"Farmer",
+
+receiver_id:
+currentBuyerId,
+
+receiver_type:
+"Buyer",
+
+message
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+input.value = "";
+
+openChat(
+
+currentBuyerId,
+
+document
+.getElementById(
+"chatName"
+)
+.innerText
+
+);
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ======================
+// ENTER KEY
+// ======================
+
+document
+.getElementById(
+"messageInput"
+)
+
+.addEventListener(
+
+"keypress",
+
+function(e){
+
+if(
+e.key ===
+"Enter"
+){
+
+sendMessage();
+
+}
+
+}
+
+);
+
+
+// ======================
+// BUTTON
+// ======================
+
+document
+.querySelector(
+".send-btn"
+)
+
+.addEventListener(
+
+"click",
+
+sendMessage
+
+);
+
+
+// ======================
+// AUTO SCROLL
+// ======================
+
+function
+scrollBottom(){
+
+const chatBody =
+document
+.getElementById(
+"chatBody"
+);
+
+chatBody.scrollTop =
+chatBody.scrollHeight;
+
+}
+
+
+// ======================
+// AUTO REFRESH CHAT
+// ======================
+
+setInterval(()=>{
+
+if(
+currentBuyerId
+){
+
+openChat(
+
+currentBuyerId,
+
+document
+.getElementById(
+"chatName"
+)
+.innerText
+
+);
+
+}
+
+},3000);
+
+
+// ======================
+// PAGE LOAD
+// ======================
+
+window.onload =
+function(){
+
+loadBuyers();
+
+};
+
+</script>
+
+</main>
+
+</div>
+</body>
+</html>

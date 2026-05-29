@@ -1,0 +1,441 @@
+
+html{
+    scroll-behavior:smooth;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+}
+
+/* Navbar */
+
+.custom-navbar{
+    background: rgba(255,255,255,0.95);
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    padding:15px 0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#198754 !important;
+}
+
+.nav-link{
+    color:#333 !important;
+    margin:0 10px;
+    font-weight:500;
+}
+
+/* Hero */
+
+.hero-section{
+    background:
+    linear-gradient(to right,#f8fff9,#e9f7ef);
+}
+
+.hero-title{
+    font-size:55px;
+    font-weight:700;
+    color:#222;
+}
+
+.hero-text{
+    font-size:18px;
+    color:#555;
+    margin:20px 0;
+    line-height:1.8;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.hero-features{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    color:#198754;
+    font-weight:500;
+}
+
+.hero-img{
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .hero-title{
+        font-size:38px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+    /* Section Titles */
+
+.section-title{
+    font-size:42px;
+    font-weight:700;
+    color:#222;
+}
+
+.section-subtitle{
+    color:#666;
+}
+
+/* Stats */
+
+.stats-section{
+    background:#fff;
+}
+
+.stat-card{
+    background:#fff;
+    padding:35px 20px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+}
+
+.stat-card h2{
+    color:#198754;
+    font-size:42px;
+    font-weight:700;
+}
+
+.stat-card p{
+    color:#555;
+}
+
+/* How It Works */
+
+.how-section{
+    background:#f8f9fa;
+}
+
+.work-card{
+    background:#fff;
+    padding:40px 25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.work-card:hover{
+    transform:translateY(-10px);
+}
+
+.work-icon{
+    font-size:50px;
+    color:#198754;
+    margin-bottom:20px;
+}
+
+/* Why Choose */
+
+.why-img{
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.feature-box{
+    background:#f8fff9;
+    padding:18px 20px;
+    margin-bottom:15px;
+    border-radius:15px;
+    font-size:18px;
+    font-weight:500;
+    box-shadow:0 3px 10px rgba(0,0,0,0.05);
+}
+
+.feature-box i{
+    color:#198754;
+    margin-right:10px;
+}
+/* Benefits */
+
+.benefits-section{
+    background:#fff;
+}
+
+.benefit-card{
+    background:#fff;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    height:100%;
+    transition:0.3s;
+}
+
+.benefit-card:hover{
+    transform:translateY(-10px);
+}
+
+.benefit-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.benefit-header i{
+    font-size:40px;
+    color:#198754;
+}
+
+.benefit-card ul{
+    list-style:none;
+    padding:0;
+}
+
+.benefit-card ul li{
+    margin-bottom:15px;
+    font-size:17px;
+}
+
+/* Testimonials */
+
+.testimonial-section{
+    background:#f8f9fa;
+}
+
+.testimonial-card{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.testimonial-card p{
+    font-size:18px;
+    color:#555;
+}
+
+/* CTA */
+
+.cta-section{
+    background:#198754;
+    color:white;
+    padding:90px 0;
+}
+
+.cta-section h2{
+    font-size:42px;
+    font-weight:700;
+}
+
+/* Footer */
+
+.footer-section{
+    background:#111;
+    color:#fff;
+    padding:70px 0 30px;
+}
+
+.footer-section ul{
+    list-style:none;
+    padding:0;
+}
+
+.footer-section li{
+    margin-bottom:12px;
+    color:#ccc;
+}
+
+.footer-section p{
+    color:#ccc;
+}
+.footer-links{
+    list-style:none;
+    padding:0;
+}
+
+.footer-links li{
+    margin-bottom:12px;
+}
+
+.footer-links a{
+    color:#ccc;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+    color:#fff;
+    padding-left:5px;
+}
+/* Navbar Scroll Effect */
+
+.custom-navbar{
+    transition:all 0.3s ease;
+}
+
+.navbar-scrolled{
+    background:#ffffff !important;
+    box-shadow:0 4px 20px rgba(0,0,0,0.08);
+    padding:10px 0;
+}
+/* Scroll Animation */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all 0.8s ease;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+/* Role Selection */
+
+.role-section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+    linear-gradient(to right,
+    #f8fff9,
+    #e8f5ec);
+    padding:80px 0;
+}
+
+.role-title{
+    font-size:48px;
+    font-weight:700;
+    color:#222;
+}
+
+.role-subtitle{
+    color:#666;
+    font-size:18px;
+}
+
+.role-card{
+    background:#fff;
+    padding:40px 30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    text-align:center;
+    transition:0.3s;
+    height:100%;
+}
+
+.role-card:hover{
+    transform:translateY(-10px);
+}
+
+.role-icon{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.role-icon i{
+    font-size:42px;
+    color:#fff;
+}
+
+.farmer-icon{
+    background:#198754;
+}
+
+.restaurant-icon{
+    background:#212529;
+}
+
+.role-card h3{
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.role-card p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.back-home{
+    text-decoration:none;
+    color:#198754;
+    font-weight:600;
+}
+/* Register */
+
+.register-section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+    linear-gradient(to right,
+    #f8fff9,
+    #e8f5ec);
+    padding:60px 0;
+}
+
+.register-card{
+    background:#fff;
+    border-radius:30px;
+    padding:50px;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+    max-width:950px;
+    margin:auto;
+}
+
+.register-title{
+    font-size:40px;
+    font-weight:700;
+}
+
+.register-subtitle{
+    color:#666;
+}
+
+.progress{
+    height:12px;
+    border-radius:20px;
+}
+
+.progress-bar{
+    background:#198754;
+}
+
+.form-control{
+    border-radius:12px;
+    padding:12px;
+}
+/* Validation */
+
+.input-error{
+    border:2px solid red !important;
+}
+
+.input-success{
+    border:2px solid #198754 !important;
+}
+
+.text-danger{
+    font-size:14px;
+}
+
+}

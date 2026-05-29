@@ -1,0 +1,3307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width, initial-scale=1.0">
+
+<title>
+Farm2Hotel | Premium Buyer Dashboard
+</title>
+
+<link
+href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link
+href=
+"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+#f5f7fb;
+
+overflow-x:hidden;
+
+}
+
+/* DASHBOARD */
+
+.dashboard{
+display:flex;
+min-height:100vh;
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+width:290px;
+
+background:
+linear-gradient(
+180deg,
+#0f172a,
+#1e293b
+);
+
+position:fixed;
+
+height:100vh;
+
+padding:30px 20px;
+
+overflow-y:auto;
+
+z-index:999;
+
+}
+
+.logo-box{
+
+margin-bottom:40px;
+
+}
+
+.logo-box h2{
+
+font-size:32px;
+font-weight:800;
+color:#fff;
+
+}
+
+.logo-box p{
+
+color:#94a3b8;
+font-size:14px;
+
+}
+
+.menu{
+
+list-style:none;
+padding:0;
+
+}
+
+.menu li{
+margin-bottom:12px;
+}
+
+.menu a{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+padding:16px 20px;
+
+border-radius:20px;
+
+text-decoration:none;
+
+color:#cbd5e1;
+
+font-size:15px;
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.menu a:hover,
+.menu .active{
+
+background:
+rgba(34,197,94,.15);
+
+color:#fff;
+
+transform:
+translateX(5px);
+
+}
+
+.menu i{
+font-size:18px;
+}
+
+
+/* MAIN */
+
+.main-content{
+
+margin-left:290px;
+width:100%;
+
+padding:30px;
+
+}
+
+
+/* NAVBAR */
+
+.top-navbar{
+
+background:
+rgba(255,255,255,.8);
+
+backdrop-filter:
+blur(15px);
+
+padding:18px 25px;
+
+border-radius:30px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.05);
+
+position:sticky;
+
+top:20px;
+
+z-index:100;
+
+}
+
+.search-box{
+
+position:relative;
+width:50%;
+
+}
+
+.search-box i{
+
+position:absolute;
+
+top:50%;
+left:18px;
+
+transform:
+translateY(-50%);
+
+color:#94a3b8;
+
+}
+
+.search-box input{
+
+width:100%;
+
+border:none;
+outline:none;
+
+background:#f1f5f9;
+
+padding:
+16px
+20px
+16px
+50px;
+
+border-radius:18px;
+
+font-size:15px;
+
+}
+
+.nav-icons{
+
+display:flex;
+gap:14px;
+
+}
+
+.icon-box{
+
+width:55px;
+height:55px;
+
+border-radius:18px;
+
+background:#fff;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:20px;
+
+cursor:pointer;
+
+transition:.3s;
+
+position:relative;
+
+box-shadow:
+0 8px 25px
+rgba(0,0,0,.05);
+
+}
+
+.icon-box:hover{
+
+transform:
+translateY(-4px);
+
+}
+
+.notification-count{
+
+position:absolute;
+
+top:5px;
+right:5px;
+
+background:red;
+color:#fff;
+
+width:20px;
+height:20px;
+
+font-size:11px;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+
+/* HERO */
+
+.hero{
+
+margin-top:30px;
+
+padding:50px;
+
+border-radius:35px;
+
+background:
+linear-gradient(
+135deg,
+#16a34a,
+#22c55e
+);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+flex-wrap:wrap;
+
+overflow:hidden;
+
+position:relative;
+
+color:#fff;
+
+box-shadow:
+0 20px 50px
+rgba(22,163,74,.25);
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+right:-80px;
+top:-80px;
+
+width:300px;
+height:300px;
+
+background:
+rgba(255,255,255,.12);
+
+border-radius:50%;
+
+}
+
+.hero-left h1{
+
+font-size:42px;
+font-weight:800;
+
+margin-bottom:10px;
+
+}
+
+.hero-left p{
+
+font-size:17px;
+opacity:.9;
+
+}
+
+.hero-badge{
+
+display:inline-block;
+
+margin-top:18px;
+
+padding:12px 22px;
+
+border-radius:50px;
+
+background:
+rgba(255,255,255,.15);
+
+font-size:14px;
+font-weight:600;
+
+}
+
+.hero-right{
+
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+
+}
+
+.live-card{
+
+background:
+rgba(255,255,255,.15);
+
+backdrop-filter:
+blur(10px);
+
+padding:22px;
+
+border-radius:24px;
+
+min-width:180px;
+
+}
+
+.live-card h5{
+
+font-size:14px;
+opacity:.9;
+
+}
+
+.live-card h3{
+
+font-size:30px;
+font-weight:700;
+
+margin-top:10px;
+
+}
+
+
+/* KPI */
+
+.kpi-section{
+
+margin-top:30px;
+
+display:grid;
+
+grid-template-columns:
+repeat(4,1fr);
+
+gap:20px;
+
+}
+
+.kpi-card{
+
+background:#fff;
+
+padding:28px;
+
+border-radius:30px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.05);
+
+transition:.3s;
+
+}
+
+.kpi-card:hover{
+
+transform:
+translateY(-6px);
+
+}
+
+.kpi-card i{
+
+font-size:30px;
+color:#16a34a;
+
+margin-bottom:18px;
+
+}
+
+.kpi-card h2{
+
+font-size:38px;
+font-weight:800;
+
+}
+
+.kpi-card p{
+
+margin:0;
+color:#64748b;
+
+}
+
+
+/* VEGETABLE CARD */
+
+.veg-card{
+
+border:none;
+
+border-radius:35px;
+
+overflow:hidden;
+
+box-shadow:
+0 10px 35px
+rgba(0,0,0,.08);
+
+transition:.4s;
+
+background:#fff;
+
+height:100%;
+
+}
+
+.veg-card:hover{
+
+transform:
+translateY(-8px);
+
+box-shadow:
+0 20px 45px
+rgba(0,0,0,.14);
+
+}
+
+.veg-card img{
+
+width:100%;
+height:240px;
+
+object-fit:cover;
+
+transition:.4s;
+
+}
+
+.veg-card:hover img{
+
+transform:
+scale(1.08);
+
+}
+
+.veg-body{
+padding:22px;
+}
+
+.price{
+
+font-size:28px;
+font-weight:800;
+
+color:#16a34a;
+
+}
+
+
+/* FARMER CARD */
+
+.farmer-card{
+
+background:#fff;
+
+border-radius:30px;
+
+padding:25px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.05);
+
+transition:.3s;
+
+height:100%;
+
+}
+
+.farmer-card:hover{
+
+transform:
+translateY(-6px);
+
+}
+
+.farmer-img{
+
+width:75px;
+height:75px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #16a34a;
+
+margin-bottom:15px;
+
+}
+
+
+/* FLOATING CART */
+
+#floatingCart{
+
+position:fixed;
+
+bottom:25px;
+right:25px;
+
+background:
+linear-gradient(
+135deg,
+#16a34a,
+#22c55e
+);
+
+color:#fff;
+
+padding:18px 28px;
+
+border-radius:60px;
+
+display:flex;
+align-items:center;
+gap:10px;
+
+font-weight:700;
+
+cursor:pointer;
+
+z-index:9999;
+
+box-shadow:
+0 20px 50px
+rgba(22,163,74,.35);
+
+animation:
+floatCart 2s infinite;
+
+}
+
+@keyframes floatCart{
+
+0%{
+transform:
+translateY(0);
+}
+
+50%{
+transform:
+translateY(-6px);
+}
+
+100%{
+transform:
+translateY(0);
+}
+
+}
+
+
+/* CART DRAWER */
+
+#cartDrawer{
+
+position:fixed;
+
+top:0;
+right:-500px;
+
+width:420px;
+height:100vh;
+
+background:#fff;
+
+box-shadow:
+-10px 0 30px
+rgba(0,0,0,.1);
+
+transition:.4s;
+
+z-index:99999;
+
+padding:25px;
+
+overflow-y:auto;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+.sidebar{
+display:none;
+}
+
+.main-content{
+margin-left:0;
+padding:15px;
+}
+
+.search-box{
+width:100%;
+}
+
+.top-navbar{
+
+flex-direction:column;
+gap:20px;
+
+}
+
+.kpi-section{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+.hero{
+padding:30px;
+}
+
+.hero-left h1{
+font-size:32px;
+}
+
+}
+
+@media(max-width:576px){
+
+.kpi-section{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ==========================
+PREMIUM GLASS EFFECT
+========================== */
+
+.glass-card{
+background:
+rgba(255,255,255,.75);
+
+backdrop-filter:
+blur(20px);
+
+border:
+1px solid
+rgba(255,255,255,.2);
+
+box-shadow:
+0 8px 30px
+rgba(0,0,0,.08);
+}
+
+
+/* ==========================
+HOVER PREMIUM
+========================== */
+
+.card,
+.kpi-card,
+.farmer-card{
+
+transition:
+all .35s ease;
+
+}
+
+.card:hover,
+.kpi-card:hover,
+.farmer-card:hover{
+
+transform:
+translateY(-10px);
+
+box-shadow:
+0 20px 50px
+rgba(0,0,0,.12);
+
+}
+
+
+/* ==========================
+PREMIUM BUTTONS
+========================== */
+
+.btn-success{
+
+background:
+linear-gradient(
+135deg,
+#198754,
+#157347
+);
+
+border:none;
+font-weight:600;
+
+transition:.3s;
+}
+
+.btn-success:hover{
+
+transform:
+translateY(-2px)
+scale(1.03);
+
+}
+
+
+/* ==========================
+LOADING SHIMMER
+========================== */
+
+.skeleton{
+
+background:
+linear-gradient(
+90deg,
+#eee 25%,
+#f5f5f5 50%,
+#eee 75%
+);
+
+background-size:
+200% 100%;
+
+animation:
+shimmer 1.5s infinite;
+
+border-radius:20px;
+}
+
+@keyframes shimmer{
+
+0%{
+background-position:
+200% 0;
+}
+
+100%{
+background-position:
+-200% 0;
+}
+
+}
+
+
+/* ==========================
+LIVE STATUS DOT
+========================== */
+
+.live-dot{
+
+width:10px;
+height:10px;
+
+background:#00ff6e;
+
+border-radius:50%;
+
+display:inline-block;
+
+margin-right:6px;
+
+animation:
+pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:1;
+}
+
+50%{
+transform:scale(1.5);
+opacity:.5;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+
+/* ==========================
+PREMIUM SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:
+linear-gradient(
+180deg,
+#198754,
+#157347
+);
+
+border-radius:20px;
+
+}
+
+
+/* ==========================
+CATEGORY CHIPS
+========================== */
+
+.category-chip{
+
+padding:
+10px 20px;
+
+border-radius:
+50px;
+
+background:#fff;
+
+box-shadow:
+0 4px 20px
+rgba(0,0,0,.08);
+
+cursor:pointer;
+
+transition:.3s;
+
+font-weight:500;
+}
+
+.category-chip:hover{
+
+background:#198754;
+color:#fff;
+
+transform:
+translateY(-2px);
+
+}
+
+
+/* ==========================
+PREMIUM ANIMATION
+========================== */
+
+.fade-up{
+
+animation:
+fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:
+translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo-box">
+
+            <h2>🌱 Farm2Hotel</h2>
+            <p>Premium Buyer Panel</p>
+
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="#" class="active">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-seedling"></i>
+                    Browse Market
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-heart"></i>
+                    Wishlist
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    Orders
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Nearby Farmers
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-wallet"></i>
+                    Payments
+                </a>
+            </li>
+
+            <li>
+                <a href="#" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- TOP NAVBAR -->
+
+        <div class="top-navbar">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-search"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search vegetables, farmers, categories...">
+
+            </div>
+
+            <div class="nav-icons">
+
+                <div class="icon-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div
+                    class="icon-box"
+                    onclick="openCart()">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    <span
+                        class="notification-count"
+                        id="notificationCount">
+
+                        0
+
+                    </span>
+
+                </div>
+
+                <div class="icon-box">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-left">
+
+                <h1 id="welcomeText">
+
+                    Welcome Back 👋
+
+                </h1>
+
+                <p id="businessInfo">
+
+                    Loading Business Details...
+
+                </p>
+
+                <div class="hero-badge">
+
+                    ⚡ Fast Delivery • Verified Farmers
+
+                </div>
+
+            </div>
+
+            <div class="hero-right">
+
+                <div class="live-card">
+
+                    <h5>📦 Live Orders</h5>
+
+                    <h3 id="liveOrders">
+
+                        0
+
+                    </h3>
+
+                </div>
+
+                <div class="live-card">
+
+                    <h5>🌱 Vegetables</h5>
+
+                    <h3 id="totalVegetables">
+
+                        0
+
+                    </h3>
+
+                </div>
+
+                <div class="live-card">
+
+                    <h5>👨‍🌾 Farmers</h5>
+
+                    <h3 id="nearbyFarmers">
+
+                        0
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================
+SPECIAL OFFERS
+========================== -->
+
+<section class="mt-5">
+
+<div class="
+d-flex
+justify-content-between
+align-items-center
+mb-4">
+
+<div>
+
+<h2 class="fw-bold">
+
+🎁 Special Offers
+
+</h2>
+
+<p class="text-muted mb-0">
+
+Best deals from farmers
+
+</p>
+
+</div>
+
+<button
+class="
+btn
+btn-outline-success
+rounded-pill">
+
+View All
+
+</button>
+
+</div>
+
+
+<div class="row">
+
+<div class="col-lg-4 mb-4">
+
+<div
+class="
+card
+border-0
+rounded-5
+overflow-hidden
+text-white
+shadow-lg"
+
+style="
+background:
+linear-gradient(
+135deg,
+#198754,
+#20c997
+);
+">
+
+<div class="p-4">
+
+<h6>
+LIMITED OFFER
+</h6>
+
+<h2 class="fw-bold">
+
+🥬 20% OFF
+
+</h2>
+
+<p>
+
+On leafy vegetables
+
+</p>
+
+<button
+class="
+btn
+btn-light
+rounded-pill">
+
+Order Now
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 mb-4">
+
+<div
+class="
+card
+border-0
+rounded-5
+overflow-hidden
+text-white
+shadow-lg"
+
+style="
+background:
+linear-gradient(
+135deg,
+#fd7e14,
+#ff922b
+);
+">
+
+<div class="p-4">
+
+<h6>
+HOT DEAL
+
+</h6>
+
+<h2 class="fw-bold">
+
+🍅 Tomato Sale
+
+</h2>
+
+<p>
+
+Fresh farm tomatoes
+
+</p>
+
+<button
+class="
+btn
+btn-light
+rounded-pill">
+
+Shop Now
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 mb-4">
+
+<div
+class="
+card
+border-0
+rounded-5
+overflow-hidden
+text-white
+shadow-lg"
+
+style="
+background:
+linear-gradient(
+135deg,
+#dc3545,
+#ff6b6b
+);
+">
+
+<div class="p-4">
+
+<h6>
+
+FLASH SALE
+
+</h6>
+
+<h2 class="fw-bold">
+
+⚡ Fast Delivery
+
+</h2>
+
+<p>
+
+Get within 30 mins
+
+</p>
+
+<button
+class="
+btn
+btn-light
+rounded-pill">
+
+Explore
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- ==========================
+RECENTLY VIEWED
+========================== -->
+
+<section class="mt-5">
+
+<div class="
+d-flex
+justify-content-between
+align-items-center
+mb-4">
+
+<div>
+
+<h2 class="fw-bold">
+
+👀 Recently Viewed
+
+</h2>
+
+<p class="text-muted">
+
+Products you explored
+
+</p>
+
+</div>
+
+</div>
+
+<div
+class="row"
+id="recentlyViewed">
+
+<div class="col-12">
+
+<div class="
+card
+border-0
+rounded-5
+shadow-sm
+p-5
+text-center">
+
+<h1>
+🛍️
+</h1>
+
+<h5 class="fw-bold">
+
+No recently viewed items
+
+</h5>
+
+<p class="text-muted">
+
+Start browsing vegetables
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- ==========================
+SMART RECOMMENDATION
+========================== -->
+
+<section class="mt-5">
+
+<div class="
+d-flex
+justify-content-between
+align-items-center
+mb-4">
+
+<div>
+
+<h2 class="fw-bold">
+
+🤖 Recommended For You
+
+</h2>
+
+<p class="text-muted">
+
+Based on trending demand
+
+</p>
+
+</div>
+
+</div>
+
+<div
+class="row"
+id="recommendedVegetables">
+
+</div>
+
+</section>
+
+
+
+
+<!-- ==========================
+LIVE ACTIVITY
+========================== -->
+
+<section class="mt-5">
+
+<div class="
+card
+border-0
+rounded-5
+shadow-sm
+p-4">
+
+<div class="
+d-flex
+justify-content-between
+align-items-center
+mb-4">
+
+<h3 class="fw-bold">
+
+📈 Live Market Activity
+
+</h3>
+
+<span
+class="
+badge
+bg-success
+rounded-pill">
+
+● LIVE
+
+</span>
+
+</div>
+
+<div class="row text-center">
+
+<div class="col-md-3">
+
+<h2 class="fw-bold text-success">
+
+120+
+
+</h2>
+
+<p class="text-muted">
+
+Orders Today
+
+</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2 class="fw-bold text-primary">
+
+42
+
+</h2>
+
+<p class="text-muted">
+
+Active Farmers
+
+</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2 class="fw-bold text-danger">
+
+18
+
+</h2>
+
+<p class="text-muted">
+
+Fast Selling
+
+</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2 class="fw-bold text-warning">
+
+9
+
+</h2>
+
+<p class="text-muted">
+
+New Products
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+        <!-- QUICK ACTIONS -->
+
+<div class="row mt-4">
+
+<div class="col-lg-3 mb-3">
+
+<div class="card border-0 rounded-5 p-4 text-center shadow-sm">
+
+<h2>⚡</h2>
+
+<h5 class="fw-bold">
+Instant Delivery
+</h5>
+
+<p class="text-muted mb-0">
+Fresh in 30 mins
+</p>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 mb-3">
+
+<div class="card border-0 rounded-5 p-4 text-center shadow-sm">
+
+<h2>🔥</h2>
+
+<h5 class="fw-bold">
+Trending Today
+</h5>
+
+<p class="text-muted mb-0">
+Fast selling products
+</p>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 mb-3">
+
+<div class="card border-0 rounded-5 p-4 text-center shadow-sm">
+
+<h2>💰</h2>
+
+<h5 class="fw-bold">
+Best Price
+</h5>
+
+<p class="text-muted mb-0">
+Direct farmer pricing
+</p>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-3 mb-3">
+
+<div class="card border-0 rounded-5 p-4 text-center shadow-sm">
+
+<h2>🛡️</h2>
+
+<h5 class="fw-bold">
+Verified Farmers
+</h5>
+
+<p class="text-muted mb-0">
+100% trusted sellers
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+        <!-- KPI SECTION -->
+
+        <section class="kpi-section">
+
+            <div class="kpi-card">
+
+                <i class="fa-solid fa-box"></i>
+
+                <h2 id="myOrders">
+
+                    0
+
+                </h2>
+
+                <p>Total Orders</p>
+
+            </div>
+
+            <div class="kpi-card">
+
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                <h2>
+
+                    ₹<span id="monthlySpend">
+
+                        0
+
+                    </span>
+
+                </h2>
+
+                <p>Monthly Spend</p>
+
+            </div>
+
+            <div class="kpi-card">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <h2 id="wishlistCount">
+
+                    0
+
+                </h2>
+
+                <p>Wishlist Items</p>
+
+            </div>
+
+            <div class="kpi-card">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <h2 id="cartCountTop">
+
+                    0
+
+                </h2>
+
+                <p>Cart Items</p>
+
+            </div>
+
+        </section>
+
+        <!-- FRESH VEGETABLES -->
+
+        <div
+            class="d-flex justify-content-between align-items-center mt-5 mb-4 flex-wrap gap-3">
+
+            <div>
+
+                <h2
+                    style="
+                    font-size:34px;
+                    font-weight:700;">
+
+                    🥬 Fresh Vegetables
+
+                </h2>
+
+                <p class="text-muted">
+
+                    Fresh vegetables directly from farmers
+
+                </p>
+
+            </div>
+
+            <button
+                class="btn btn-success rounded-pill px-4 py-2">
+
+                Browse Market →
+
+            </button>
+
+        </div>
+
+        <!-- VEGETABLE LIST -->
+
+        <div
+            class="row"
+            id="vegetableList">
+
+        </div>
+
+        <!-- TRENDING -->
+
+        <section class="mt-5">
+
+            <div
+                class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+
+                    <h2
+                        style="
+                        font-size:34px;
+                        font-weight:700;">
+
+                        🔥 Trending Today
+
+                    </h2>
+
+                    <p class="text-muted">
+
+                        Fast selling vegetables
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                class="row"
+                id="trendingVegetables">
+
+            </div>
+
+        </section>
+
+        <!-- FARMERS -->
+
+        <section class="mt-5">
+
+            <div
+                class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+
+                    <h2
+                        style="
+                        font-size:34px;
+                        font-weight:700;">
+
+                        📍 Nearby Farmers
+
+                    </h2>
+
+                    <p class="text-muted">
+
+                        Trusted nearby farms
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                class="row"
+                id="nearbyFarmersList">
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- FLOATING CART -->
+
+<div
+    id="floatingCart"
+    onclick="openCart()">
+
+    🛒
+
+    <span id="cartCount">
+
+        0
+
+    </span>
+
+    Items
+
+</div>
+
+<!-- CART DRAWER -->
+
+<div id="cartDrawer">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="fw-bold">
+
+            🛒 My Cart
+
+        </h2>
+
+        <button
+            class="btn btn-danger rounded-circle"
+            onclick="closeCart()">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div id="cartItems">
+
+        <p class="text-muted">
+
+            Cart Empty
+
+        </p>
+
+    </div>
+
+    <div class="mt-4 border-top pt-4">
+
+        <h4>
+
+            Total:
+            ₹<span id="cartTotal">
+
+                0
+
+            </span>
+
+        </h4>
+
+        <button
+            class="btn btn-success w-100 rounded-pill py-3 mt-3"
+           onclick="placeOrder()"
+
+            Proceed To Checkout 🚀
+
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+// ============================
+// BASE URL
+// ============================
+
+const API_BASE =
+"http://localhost:5000/api";
+
+
+// ============================
+// LOGIN PROTECTION
+// ============================
+
+const loggedBuyer =
+JSON.parse(
+localStorage.getItem("buyer")
+);
+
+if(!loggedBuyer){
+
+window.location.href =
+"./buyer-login.html";
+
+}
+
+
+// ============================
+// BUYER INFO
+// ============================
+
+document
+.getElementById("welcomeText")
+.innerHTML =
+
+`Welcome Back,
+${loggedBuyer.owner_name} 👋`;
+
+document
+.getElementById("businessInfo")
+.innerHTML =
+
+`${loggedBuyer.business_name}
+• ${loggedBuyer.city || "India"}`;
+
+
+
+
+
+// ============================
+// DASHBOARD STATS
+// ============================
+
+async function
+loadDashboardStats(){
+
+try{
+
+const response =
+await fetch(
+
+`${API_BASE}/buyers/dashboard/${loggedBuyer.id}`
+
+);
+
+const data =
+await response.json();
+
+document
+.getElementById(
+"totalVegetables"
+)
+innerText =
+data.totalVegetables || 0;
+
+document
+.getElementById(
+"nearbyFarmers"
+)
+innerText =
+data.farmers || 0;
+
+document
+.getElementById(
+"myOrders"
+)
+innerText =
+data.orders || 0;
+
+document
+.getElementById(
+"liveOrders"
+)
+innerText =
+data.orders || 0;
+
+document
+.getElementById(
+"monthlySpend"
+)
+innerText =
+data.monthlySpend || 0;
+
+}
+catch(error){
+
+console.log(
+"Dashboard Error:",
+error
+);
+
+}
+
+}
+
+
+
+
+
+// ============================
+// LOAD VEGETABLES
+// ============================
+
+async function
+loadVegetables(){
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/vegetables`
+);
+
+const vegetables =
+await response.json();
+
+let html = "";
+
+if(
+vegetables.length === 0
+){
+
+html =
+
+`
+<div class="text-center mt-5">
+
+<h1>
+🥬
+</h1>
+
+<h4>
+No Vegetables Found
+</h4>
+
+</div>
+`;
+
+}
+
+vegetables.forEach(veg=>{
+
+html +=
+
+`
+<div class="
+col-lg-4
+col-md-6
+mb-4">
+
+<div class="
+card
+border-0
+shadow-lg
+rounded-5
+overflow-hidden
+h-100
+veg-card">
+
+<img
+src=
+"http://localhost:5000/uploads/${veg.image}"
+
+style="
+height:260px;
+object-fit:cover;
+"
+
+onerror=
+"this.src='https://via.placeholder.com/500x300?text=Vegetable'">
+
+<div class="card-body p-4">
+
+<div class="
+d-flex
+justify-content-between
+align-items-center">
+
+<h4 class="fw-bold">
+
+${veg.vegetable_name}
+
+</h4>
+
+<span class="
+badge
+bg-success
+rounded-pill">
+
+Fresh
+
+</span>
+
+</div>
+
+<p class="text-muted">
+
+${veg.category}
+
+</p>
+
+<h3 class="
+fw-bold
+text-success">
+
+₹${veg.price}/KG
+
+</h3>
+
+<p>
+
+Available:
+<b>
+
+${veg.quantity} KG
+
+</b>
+
+</p>
+
+<div class="
+d-flex
+gap-2
+mt-3">
+
+<button
+class="
+btn
+btn-success
+w-100
+rounded-pill"
+
+onclick=
+"addToCart(
+${veg.id},
+${veg.farmer_id},
+${veg.price}
+)">
+
+🛒 Add
+
+</button>
+
+<button
+class="
+btn
+btn-outline-danger
+rounded-pill"
+
+onclick=
+"addWishlist(
+${veg.id}
+)">
+
+❤️
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"vegetableList"
+)
+innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(
+"Vegetable Error:",
+error
+);
+
+}
+
+}
+
+
+
+
+
+// ============================
+// TRENDING VEGETABLES
+// ============================
+
+async function
+loadTrendingVegetables(){
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/vegetables`
+);
+
+const vegetables =
+await response.json();
+
+const trending =
+
+vegetables
+.sort(
+(a,b)=>
+b.quantity -
+a.quantity
+)
+.slice(0,3);
+
+let html = "";
+
+trending.forEach(veg=>{
+
+html +=
+
+`
+<div class="col-lg-4 mb-4">
+
+<div class="
+card
+rounded-5
+shadow
+border-0">
+
+<img
+src=
+"http://localhost:5000/uploads/${veg.image}"
+
+style="
+height:220px;
+object-fit:cover;
+"
+
+onerror=
+"this.src='https://via.placeholder.com/400x250'">
+
+<div class="card-body">
+
+<span class="
+badge
+bg-danger
+mb-2">
+
+🔥 Trending
+
+</span>
+
+<h4 class="fw-bold">
+
+${veg.vegetable_name}
+
+</h4>
+
+<p class="text-muted">
+
+${veg.category}
+
+</p>
+
+<h3 class="text-success">
+
+₹${veg.price}/KG
+
+</h3>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"trendingVegetables"
+)
+innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+
+
+
+// ============================
+// NEARBY FARMERS
+// ============================
+
+async function
+loadNearbyFarmers(){
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/farmers/nearby`
+);
+
+const farmers =
+await response.json();
+
+let html = "";
+
+document
+.getElementById(
+"nearbyFarmers"
+)
+innerText =
+farmers.length;
+
+farmers.forEach(farmer=>{
+
+html +=
+
+`
+<div class="col-lg-4 mb-4">
+
+<div class="
+card
+border-0
+shadow-sm
+rounded-5
+p-4
+text-center">
+
+<img
+src=
+"http://localhost:5000/uploads/${farmer.profile_image}"
+
+class="rounded-circle mx-auto"
+
+style="
+width:90px;
+height:90px;
+object-fit:cover;
+"
+
+onerror=
+"this.src='https://ui-avatars.com/api/?name=Farmer'">
+
+<h4 class="
+fw-bold
+mt-3">
+
+${farmer.farm_name}
+
+</h4>
+
+<p class="text-muted">
+
+${farmer.village},
+${farmer.district}
+
+</p>
+
+<button
+class="
+btn
+btn-success
+rounded-pill
+w-100">
+
+Visit Farm →
+
+</button>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"nearbyFarmersList"
+)
+innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+
+
+
+// ============================
+// ADD TO CART
+// ============================
+
+async function
+addToCart(
+vegetableId,
+farmerId,
+price
+){
+
+try{
+
+const response =
+await fetch(
+
+`${API_BASE}/cart/add`,
+
+{
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:
+JSON.stringify({
+
+buyer_id:
+loggedBuyer.id,
+
+vegetable_id:
+vegetableId,
+
+farmer_id:
+farmerId,
+
+quantity:1,
+
+price_per_kg:
+price,
+
+total_amount:
+price
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+alert(
+data.message
+);
+
+loadCart();
+loadCartCount();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+
+
+
+// ============================
+// LOAD CART COUNT
+// ============================
+
+async function
+loadCartCount(){
+
+try{
+
+const response =
+await fetch(
+
+`${API_BASE}/cart/${loggedBuyer.id}`
+
+);
+
+const cart =
+await response.json();
+
+document
+.getElementById(
+"cartCount"
+)
+innerText =
+cart.length;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+
+// ============================
+// LOAD CART
+// ============================
+
+async function loadCart() {
+
+try {
+
+const response =
+await fetch(
+`${API_BASE}/cart/${loggedBuyer.id}`
+);
+
+const cart =
+await response.json();
+
+console.log("Cart Data:", cart);
+
+let html = "";
+let total = 0;
+
+if (!cart || cart.length === 0) {
+
+document.getElementById(
+"cartItems"
+).innerHTML = `
+<div class="text-center mt-5">
+
+<h1>🛒</h1>
+
+<h4>Cart Empty</h4>
+
+<p class="text-muted">
+Add fresh vegetables
+</p>
+
+</div>
+`;
+
+document.getElementById(
+"cartTotal"
+).innerText = "0";
+
+document.getElementById(
+"cartCount"
+).innerText = "0";
+
+document.getElementById(
+"cartCountTop"
+).innerText = "0";
+
+return;
+}
+
+cart.forEach(item => {
+
+const qty =
+item.quantity || 1;
+
+const price =
+item.price_per_kg ||
+item.price || 0;
+
+const subtotal =
+qty * price;
+
+total += subtotal;
+
+
+// IMAGE
+const vegetableImage =
+item.image
+? `http://localhost:5000/uploads/${item.image}`
+: "https://via.placeholder.com/100x100?text=Veg";
+
+
+html += `
+
+<div class="card border-0 shadow-sm rounded-4 p-3 mb-3">
+
+<div class="d-flex align-items-center gap-3">
+
+<img
+src="${vegetableImage}"
+
+style="
+width:80px;
+height:80px;
+object-fit:cover;
+border-radius:15px;
+"
+
+onerror="this.src='https://via.placeholder.com/100x100?text=Veg'"
+>
+
+<div class="flex-grow-1">
+
+<h5 class="fw-bold mb-1">
+
+${item.vegetable_name ||
+item.name ||
+"Vegetable"}
+
+</h5>
+
+<p class="text-muted mb-1">
+
+₹${price}/KG
+
+</p>
+
+<p class="mb-0">
+
+Qty:
+<b>${qty}</b>
+
+</p>
+
+<h6 class="text-success mt-2">
+
+₹${subtotal}
+
+</h6>
+
+</div>
+
+<button
+class="btn btn-danger btn-sm rounded-circle"
+onclick="removeCart(${item.id})">
+
+✕
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById(
+"cartItems"
+).innerHTML = html;
+
+document.getElementById(
+"cartTotal"
+).innerText = total;
+
+document.getElementById(
+"cartCount"
+).innerText = cart.length;
+
+document.getElementById(
+"cartCountTop"
+).innerText = cart.length;
+
+}
+catch(error){
+
+console.log(
+"Cart Load Error:",
+error
+);
+
+document.getElementById(
+"cartItems"
+).innerHTML = `
+<div class="text-center p-4">
+
+<h5 class="text-danger">
+
+Failed to load cart ❌
+
+</h5>
+
+</div>
+`;
+
+}
+
+}
+
+
+
+// ============================
+// REMOVE CART
+// ============================
+
+async function
+removeCart(id){
+
+await fetch(
+
+`${API_BASE}/cart/delete/${id}`,
+
+{
+method:"DELETE"
+}
+
+);
+
+loadCart();
+loadCartCount();
+
+}
+
+
+
+
+// ============================
+// WISHLIST
+// ============================
+
+async function
+addWishlist(
+vegetableId
+){
+
+try{
+
+await fetch(
+
+`${API_BASE}/wishlist/add`,
+
+{
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:
+JSON.stringify({
+
+buyer_id:
+loggedBuyer.id,
+
+vegetable_id:
+vegetableId
+
+})
+
+}
+
+);
+
+alert(
+"Added To Wishlist ❤️"
+);
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+
+
+
+// ============================
+// NOTIFICATIONS
+// ============================
+
+async function
+loadNotificationCount(){
+
+try{
+
+const response =
+await fetch(
+
+`${API_BASE}/notifications/${loggedBuyer.id}`
+
+);
+
+const notifications =
+await response.json();
+
+const unread =
+
+notifications.filter(
+
+x =>
+x.is_read == 0
+
+).length;
+
+document
+.getElementById(
+"notificationCount"
+)
+innerText =
+unread;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+
+
+
+// ============================
+// SEARCH
+// ============================
+
+document
+.getElementById(
+"searchInput"
+)
+
+.addEventListener(
+
+"keyup",
+
+function(){
+
+const value =
+this.value
+.toLowerCase();
+
+const cards =
+
+document
+.querySelectorAll(
+"#vegetableList .col-lg-4"
+);
+
+cards.forEach(card=>{
+
+const text =
+card.innerText
+.toLowerCase();
+
+card.style.display =
+
+text.includes(value)
+
+?
+
+"block"
+
+:
+
+"none";
+
+});
+
+}
+
+);
+
+
+
+
+// ============================
+// CART DRAWER
+// ============================
+
+function openCart(){
+
+document
+.getElementById(
+"cartDrawer"
+)
+.style.right =
+"0";
+
+loadCart();
+
+}
+
+function closeCart(){
+
+document
+.getElementById(
+"cartDrawer"
+)
+.style.right =
+"-500px";
+
+}
+
+
+
+
+
+// ============================
+// CHECKOUT
+// ============================
+
+function checkout(){
+
+window.location.href =
+"./checkout.html";
+
+}
+
+
+
+
+// ============================
+// LOGOUT
+// ============================
+
+function logout(){
+
+localStorage.removeItem(
+"buyer"
+);
+
+window.location.href =
+"./buyer-login.html";
+
+}
+
+// ============================
+// RECOMMENDED VEGETABLES
+// ============================
+
+async function
+loadRecommended(){
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/vegetables`
+);
+
+const vegetables =
+await response.json();
+
+const recommended =
+
+vegetables
+.sort(
+()=> 0.5 - Math.random()
+)
+.slice(0,4);
+
+let html = "";
+
+recommended.forEach(veg=>{
+
+html +=
+
+`
+<div class="col-lg-3 mb-4">
+
+<div class="
+card
+border-0
+shadow-sm
+rounded-5
+overflow-hidden">
+
+<img
+src=
+"http://localhost:5000/uploads/${veg.image}"
+
+style="
+height:220px;
+object-fit:cover;
+"
+
+onerror=
+"this.src='https://via.placeholder.com/400x250'">
+
+<div class="card-body">
+
+<h5 class="fw-bold">
+
+${veg.vegetable_name}
+
+</h5>
+
+<p class="text-muted">
+
+${veg.category}
+
+</p>
+
+<h4 class="text-success">
+
+₹${veg.price}/KG
+
+</h4>
+
+<button
+class="
+btn
+btn-success
+rounded-pill
+w-100"
+
+onclick=
+"addToCart(
+${veg.id},
+${veg.farmer_id},
+${veg.price}
+)">
+
+Add To Cart
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"recommendedVegetables"
+)
+.innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+async function placeOrder(){
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/cart/${loggedBuyer.id}`
+);
+
+const cart =
+await response.json();
+
+if(cart.length === 0){
+
+alert("Cart Empty ❌");
+return;
+
+}
+
+// LOOP CART ITEMS
+for(const item of cart){
+
+const orderResponse =
+await fetch(
+
+`${API_BASE}/orders/place`,
+
+{
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:
+JSON.stringify({
+
+buyer_id:
+loggedBuyer.id,
+
+buyer_name:
+loggedBuyer.owner_name,
+
+business_name:
+loggedBuyer.business_name,
+
+farmer_id:
+item.farmer_id,
+
+farmer_name:
+"Farmer",
+
+vegetable_id:
+item.vegetable_id,
+
+vegetable_name:
+item.vegetable_name,
+
+quantity:
+item.quantity,
+
+delivery_address:
+loggedBuyer.city,
+
+buyer_latitude:
+loggedBuyer.latitude,
+
+buyer_longitude:
+loggedBuyer.longitude
+
+})
+
+}
+
+);
+
+const data =
+await orderResponse.json();
+
+console.log(data);
+
+}
+
+// ==================
+// CLEAR CART
+// ==================
+
+await fetch(
+`${API_BASE}/cart/clear/${loggedBuyer.id}`,
+{
+method:"DELETE"
+}
+);
+
+alert(
+"Order Placed Successfully ✅"
+);
+
+// reload
+loadCart();
+loadCartCount();
+
+window.location.href =
+"./buyer-dashboard.html";
+
+}
+catch(error){
+
+console.log(
+"Order Error:",
+error
+);
+
+alert(
+"Order Failed ❌"
+);
+
+}
+
+}
+
+
+
+
+// ============================
+// PAGE LOAD
+// ============================
+
+window.onload =
+function(){
+
+loadDashboardStats();
+
+loadVegetables();
+
+loadTrendingVegetables();
+
+loadNearbyFarmers();
+
+loadCartCount();
+
+loadNotificationCount();
+
+loadRecommended();
+
+setInterval(
+loadNotificationCount,
+5000
+);
+
+};
+
+</script>

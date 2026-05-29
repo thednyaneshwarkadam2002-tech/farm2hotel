@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width, initial-scale=1.0">
+
+<title>
+Farmer Orders | Farm2Hotel
+</title>
+
+<link
+href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link
+href=
+"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:
+'Poppins',
+sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+180deg,
+#eef5f1,
+#f8faf9
+);
+
+min-height:100vh;
+
+}
+
+
+/* =========================
+TOP NAV
+========================= */
+
+.topbar{
+
+padding:25px 0;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+.logo{
+
+font-size:32px;
+font-weight:700;
+color:#198754;
+
+}
+
+.back-btn{
+
+background:#fff;
+
+border:none;
+
+padding:14px 22px;
+
+border-radius:18px;
+
+font-weight:600;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.08);
+
+transition:.3s;
+}
+
+.back-btn:hover{
+
+transform:
+translateY(-3px);
+
+}
+
+
+/* =========================
+HERO
+========================= */
+
+.hero-section{
+
+background:
+linear-gradient(
+135deg,
+#198754,
+#20c997
+);
+
+padding:50px;
+
+border-radius:35px;
+
+color:#fff;
+
+position:relative;
+
+overflow:hidden;
+
+margin-bottom:35px;
+
+box-shadow:
+0 20px 60px
+rgba(25,135,84,.2);
+
+}
+
+.hero-section::before{
+
+content:"";
+
+position:absolute;
+
+width:250px;
+height:250px;
+
+background:
+rgba(255,255,255,.1);
+
+border-radius:50%;
+
+top:-60px;
+right:-50px;
+
+}
+
+.hero-title{
+
+font-size:42px;
+font-weight:700;
+
+margin-bottom:10px;
+
+}
+
+.hero-sub{
+
+font-size:17px;
+opacity:.9;
+}
+
+
+/* =========================
+STATS
+========================= */
+
+.stats-card{
+
+background:
+rgba(255,255,255,.7);
+
+backdrop-filter:
+blur(20px);
+
+padding:28px;
+
+border-radius:30px;
+
+box-shadow:
+0 10px 40px
+rgba(0,0,0,.06);
+
+transition:.3s;
+
+height:100%;
+
+}
+
+.stats-card:hover{
+
+transform:
+translateY(-6px);
+
+}
+
+.stats-icon{
+
+width:70px;
+height:70px;
+
+border-radius:22px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:28px;
+color:#fff;
+
+margin-bottom:18px;
+
+}
+
+.icon-green{
+background:#198754;
+}
+
+.icon-blue{
+background:#0d6efd;
+}
+
+.icon-orange{
+background:#fd7e14;
+}
+
+.stats-card h2{
+
+font-size:38px;
+font-weight:700;
+
+margin-bottom:8px;
+}
+
+.stats-card p{
+
+color:#666;
+margin:0;
+
+font-size:15px;
+}
+
+
+/* =========================
+SEARCH + FILTER
+========================= */
+
+.toolbar{
+
+background:#fff;
+
+padding:25px;
+
+border-radius:30px;
+
+box-shadow:
+0 10px 40px
+rgba(0,0,0,.06);
+
+margin-bottom:35px;
+
+}
+
+.search-box{
+
+position:relative;
+
+}
+
+.search-box i{
+
+position:absolute;
+
+top:50%;
+left:20px;
+
+transform:
+translateY(-50%);
+
+color:#888;
+
+}
+
+.search-box input{
+
+width:100%;
+
+border:none;
+outline:none;
+
+background:#f4f6f8;
+
+padding:
+18px
+20px
+18px
+55px;
+
+border-radius:18px;
+
+font-size:15px;
+
+}
+
+.filter-buttons{
+
+display:flex;
+gap:12px;
+
+flex-wrap:wrap;
+
+margin-top:20px;
+
+}
+
+.filter-btn{
+
+border:none;
+
+padding:
+12px
+22px;
+
+border-radius:40px;
+
+background:#eef2f5;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+
+background:#198754;
+color:#fff;
+
+}
+
+
+/* =========================
+SECTION TITLE
+========================= */
+
+.section-title{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.section-title h3{
+
+font-size:28px;
+font-weight:700;
+
+}
+
+.live-badge{
+
+background:#d1fae5;
+
+padding:
+10px
+18px;
+
+border-radius:40px;
+
+font-weight:600;
+
+color:#198754;
+
+}
+
+
+/* =========================
+ORDER CARD
+========================= */
+
+.order-card{
+
+background:
+rgba(255,255,255,.85);
+
+backdrop-filter:
+blur(20px);
+
+border-radius:35px;
+
+padding:28px;
+
+box-shadow:
+0 15px 50px
+rgba(0,0,0,.08);
+
+transition:.3s;
+
+height:100%;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.order-card:hover{
+
+transform:
+translateY(-8px);
+
+}
+
+.order-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:6px;
+
+background:
+linear-gradient(
+90deg,
+#198754,
+#20c997
+);
+
+}
+
+.order-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.hotel-avatar{
+
+width:75px;
+height:75px;
+
+border-radius:22px;
+
+background:
+linear-gradient(
+135deg,
+#198754,
+#20c997
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:32px;
+color:#fff;
+
+}
+
+.status-chip{
+
+padding:
+10px
+18px;
+
+border-radius:40px;
+
+font-size:14px;
+font-weight:600;
+
+}
+
+.pending{
+background:#fff3cd;
+color:#997404;
+}
+
+.accepted{
+background:#d1fae5;
+color:#198754;
+}
+
+.rejected{
+background:#f8d7da;
+color:#dc3545;
+}
+
+.order-info{
+
+background:#f8fafb;
+
+padding:14px;
+
+border-radius:16px;
+
+margin-bottom:12px;
+
+font-size:15px;
+
+}
+
+.action-btn{
+
+padding:14px;
+
+border:none;
+
+border-radius:18px;
+
+font-weight:600;
+
+width:100%;
+
+transition:.3s;
+
+}
+
+.action-btn:hover{
+
+transform:
+scale(1.03);
+
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero-title{
+font-size:30px;
+}
+
+.hero-section{
+padding:35px;
+}
+
+}
+/* SIDEBAR */
+
+.sidebar{
+
+width:280px;
+
+background:
+linear-gradient(
+180deg,
+#198754,
+#0f5132
+);
+
+color:#fff;
+
+padding:30px 20px;
+
+position:fixed;
+
+left:0;
+top:0;
+
+height:100vh;
+
+overflow-y:auto;
+
+z-index:999;
+
+}
+
+.logo-box{
+margin-bottom:40px;
+}
+
+.logo-box h2{
+font-weight:700;
+font-size:32px;
+color:#fff;
+}
+
+.logo-box p{
+opacity:.8;
+margin-top:8px;
+color:#fff;
+}
+
+.sidebar-menu{
+list-style:none;
+padding:0;
+}
+
+.sidebar-menu li{
+margin-bottom:12px;
+}
+
+.sidebar-menu a{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+padding:16px 18px;
+
+border-radius:18px;
+
+color:#fff;
+
+transition:.3s;
+
+font-size:16px;
+font-weight:500;
+
+}
+
+.sidebar-menu a:hover{
+
+background:
+rgba(255,255,255,.15);
+
+}
+
+.sidebar-menu i{
+font-size:18px;
+}
+
+
+/* PAGE LAYOUT */
+
+.dashboard-wrapper{
+display:flex;
+}
+
+.main-content{
+
+margin-left:280px;
+
+width:calc(100% - 280px);
+
+height:100vh;
+
+display:flex;
+
+overflow:hidden;
+
+}
+</style>
+
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+<div class="logo-box">
+
+<h2>
+🌱 Farm2Hotel
+</h2>
+
+<p>
+Farmer Dashboard
+</p>
+
+</div>
+
+<ul class="sidebar-menu">
+
+<li>
+<a href="farmer-dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+Dashboard
+
+</a>
+</li>
+
+<li>
+<a href="add-vegetables.html">
+
+<i class="fa-solid fa-seedling"></i>
+Add Vegetables
+
+</a>
+</li>
+
+<li>
+<a href="my-listings.html">
+
+<i class="fa-solid fa-box"></i>
+My Listings
+
+</a>
+</li>
+
+<li>
+<a href="farmer-orders.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+
+</a>
+</li>
+
+<li>
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-column"></i>
+Analytics
+
+</a>
+</li>
+
+<li>
+<a href="nearby-hotels.html">
+
+<i class="fa-solid fa-location-dot"></i>
+Nearby Hotels
+
+</a>
+</li>
+
+<li>
+<a href="revenue.html">
+<i class="fa-solid fa-wallet"></i>
+Revenue
+
+</a>
+</li>
+
+<li>
+<a href="messages.html">
+
+<i class="fa-solid fa-message"></i>
+Messages
+
+</a>
+</li>
+
+<li>
+<a href="notifications.html">
+
+<i class="fa-solid fa-bell"></i>
+Notifications
+
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+Profile
+
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="logout()">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+<div class="container py-4">
+
+
+
+
+<!-- HERO -->
+
+<section class="hero-section">
+
+<h1 class="hero-title">
+Manage Hotel Orders
+</h1>
+
+<p class="hero-sub">
+
+Track, accept and manage hotel vegetable orders in real-time.
+
+</p>
+
+</section>
+
+
+<!-- STATS -->
+
+<div class="row g-4 mb-4">
+
+<div class="col-lg-4">
+
+<div class="stats-card">
+
+<div class="stats-icon icon-green">
+
+<i class=
+"fa-solid fa-cart-shopping">
+</i>
+
+</div>
+
+<h2 id="totalOrders">
+0
+</h2>
+
+<p>
+Total Orders
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="stats-card">
+
+<div class="stats-icon icon-orange">
+
+<i class=
+"fa-solid fa-clock">
+</i>
+
+</div>
+
+<h2 id="pendingOrders">
+0
+</h2>
+
+<p>
+Pending Orders
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="stats-card">
+
+<div class="stats-icon icon-blue">
+
+<i class=
+"fa-solid fa-indian-rupee-sign">
+</i>
+
+</div>
+
+<h2 id="totalRevenue">
+₹0
+</h2>
+
+<p>
+Revenue Generated
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TOOLBAR -->
+
+<div class="toolbar">
+
+<div class="search-box">
+
+<i class=
+"fa-solid fa-search">
+</i>
+
+<input
+type="text"
+id="searchInput"
+
+placeholder=
+"Search hotel or vegetable...">
+
+</div>
+
+<div class="filter-buttons">
+
+<button
+class=
+"filter-btn active"
+data-filter=
+"all">
+
+All
+
+</button>
+
+<button
+class=
+"filter-btn"
+data-filter=
+"Pending">
+
+Pending
+
+</button>
+
+<button
+class=
+"filter-btn"
+data-filter=
+"Accepted">
+
+Accepted
+
+</button>
+
+<button
+class=
+"filter-btn"
+data-filter=
+"Rejected">
+
+Rejected
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SECTION TITLE -->
+
+<div class="section-title">
+
+<h3>
+Live Hotel Orders
+</h3>
+
+<div class="live-badge">
+
+🟢 Live Updates
+
+</div>
+
+</div>
+
+
+<!-- ORDERS -->
+
+<div
+class="row"
+id="ordersContainer">
+
+</div>
+
+<script>
+
+// ==========================
+// LOGIN CHECK
+// ==========================
+
+const loggedFarmer =
+JSON.parse(
+localStorage.getItem(
+"farmer"
+)
+);
+
+if(!loggedFarmer){
+
+window.location.href =
+"farmer-login.html";
+
+}
+
+
+// ==========================
+// LOAD ORDERS
+// ==========================
+
+async function
+loadOrders(){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/orders/farmer/${loggedFarmer.id}`
+
+);
+
+const orders =
+await response.json();
+
+const container =
+document.getElementById(
+"ordersContainer"
+);
+
+container.innerHTML =
+"";
+
+
+// ==========================
+// STATS
+// ==========================
+
+document.getElementById(
+"totalOrders"
+).innerText =
+
+orders.length;
+
+
+const pendingCount =
+orders.filter(
+
+o =>
+o.order_status ===
+"Pending"
+
+).length;
+
+document.getElementById(
+"pendingOrders"
+).innerText =
+
+pendingCount;
+
+
+const totalRevenue =
+orders
+.filter(
+o =>
+o.order_status ===
+"Accepted"
+)
+.reduce(
+
+(total,order)=>
+
+total +
+parseFloat(
+order.total_amount
+|| 0
+),
+
+0
+
+);
+
+document.getElementById(
+"totalRevenue"
+).innerText =
+
+`₹${totalRevenue}`;
+
+
+//
+// EMPTY
+//
+
+if(
+orders.length === 0
+){
+
+container.innerHTML =
+
+`
+<div class="col-12">
+
+<div
+class=
+"alert alert-warning rounded-4 p-4 text-center">
+
+<h4>
+No Orders Yet ❌
+</h4>
+
+<p class="mb-0">
+Hotels haven't placed any orders yet.
+</p>
+
+</div>
+
+</div>
+`;
+
+return;
+}
+
+
+// ==========================
+// RENDER ORDERS
+// ==========================
+
+orders.forEach(order=>{
+
+let statusClass =
+"pending";
+
+if(
+order.order_status
+=== "Accepted"
+){
+statusClass =
+"accepted";
+}
+
+if(
+order.order_status
+=== "Rejected"
+){
+statusClass =
+"rejected";
+}
+
+container.innerHTML +=
+
+`
+<div
+class=
+"col-lg-4 col-md-6 mb-4 order-item"
+
+data-status=
+"${order.order_status}"
+
+data-search=
+"
+${order.business_name}
+${order.vegetable_name}
+">
+
+<div class=
+"order-card">
+
+<div class=
+"order-header">
+
+<div class=
+"hotel-avatar">
+
+🏨
+
+</div>
+
+<div class=
+"status-chip ${statusClass}">
+
+${order.order_status}
+
+</div>
+
+</div>
+
+
+<h4 class="fw-bold mb-3">
+
+${order.business_name}
+
+</h4>
+
+
+<div class=
+"order-info">
+
+🥬
+<b>Vegetable:</b>
+
+${order.vegetable_name}
+
+</div>
+
+
+<div class=
+"order-info">
+
+📦
+<b>Quantity:</b>
+
+${order.quantity} KG
+
+</div>
+
+
+<div class=
+"order-info">
+
+💰
+<b>Amount:</b>
+
+₹${order.total_amount}
+
+</div>
+
+
+<div class=
+"order-info">
+
+📅
+<b>Ordered On:</b>
+
+${new Date(
+order.created_at
+).toLocaleDateString()}
+
+</div>
+
+
+${
+order.order_status ===
+"Pending"
+
+?
+
+`
+<div class=
+"d-flex gap-2 mt-4">
+
+<button
+
+class=
+"btn btn-success action-btn"
+
+onclick=
+"acceptOrder(${order.id})">
+
+Accept
+
+</button>
+
+<button
+
+class=
+"btn btn-danger action-btn"
+
+onclick=
+"rejectOrder(${order.id})">
+
+Reject
+
+</button>
+
+</div>
+`
+
+:
+
+`
+
+<div
+class=
+"text-center mt-4 fw-bold text-success">
+
+${
+
+order.order_status
+=== "Accepted"
+
+?
+
+"✅ Order Accepted"
+
+:
+
+"❌ Order Rejected"
+
+}
+
+</div>
+
+`
+
+}
+
+</div>
+
+</div>
+`;
+
+});
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// ACCEPT ORDER
+// ==========================
+
+async function
+acceptOrder(id){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/orders/accept/${id}`,
+
+{
+method:"PUT"
+}
+
+);
+
+const data =
+await response.json();
+
+alert(
+data.message
+);
+
+loadOrders();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// REJECT ORDER
+// ==========================
+
+async function
+rejectOrder(id){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/orders/reject/${id}`,
+
+{
+method:"PUT"
+}
+
+);
+
+const data =
+await response.json();
+
+alert(
+data.message
+);
+
+loadOrders();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// SEARCH
+// ==========================
+
+document
+.getElementById(
+"searchInput"
+)
+
+.addEventListener(
+
+"keyup",
+
+function(){
+
+const value =
+this.value
+.toLowerCase();
+
+document
+.querySelectorAll(
+".order-item"
+)
+
+.forEach(item=>{
+
+const text =
+item.dataset.search
+.toLowerCase();
+
+item.style.display =
+
+text.includes(value)
+
+?
+
+"block"
+
+:
+
+"none";
+
+});
+
+}
+
+);
+
+
+// ==========================
+// FILTER BUTTONS
+// ==========================
+
+document
+.querySelectorAll(
+".filter-btn"
+)
+
+.forEach(btn=>{
+
+btn.addEventListener(
+
+"click",
+
+function(){
+
+document
+.querySelectorAll(
+".filter-btn"
+)
+
+.forEach(b=>
+b.classList.remove(
+"active"
+)
+);
+
+this.classList.add(
+"active"
+);
+
+const filter =
+this.dataset.filter;
+
+document
+.querySelectorAll(
+".order-item"
+)
+
+.forEach(card=>{
+
+if(
+filter === "all"
+){
+
+card.style.display =
+"block";
+
+}
+else{
+
+card.style.display =
+
+card.dataset.status
+=== filter
+
+?
+
+"block"
+
+:
+
+"none";
+
+}
+
+});
+
+}
+
+);
+
+});
+
+
+// ==========================
+// AUTO LOAD
+// ==========================
+
+window.onload =
+function(){
+
+loadOrders();
+
+setInterval(
+
+loadOrders,
+
+5000
+
+);
+
+};
+
+</script>
+
+</body>
+</html>

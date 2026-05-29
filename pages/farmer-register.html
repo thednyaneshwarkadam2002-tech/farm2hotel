@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Registration - Farm2Hotel</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Poppins,sans-serif;
+        }
+
+        body{
+            background:#f4fff6;
+        }
+
+        .register-section{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:40px 15px;
+        }
+
+        .register-card{
+            width:100%;
+            max-width:950px;
+            background:#fff;
+            padding:40px;
+            border-radius:25px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .register-title{
+            font-size:38px;
+            font-weight:700;
+            text-align:center;
+        }
+
+        .register-subtitle{
+            text-align:center;
+            color:#666;
+            margin-bottom:25px;
+        }
+
+        .progress{
+            height:12px;
+            border-radius:30px;
+            margin-bottom:30px;
+        }
+
+        .progress-bar{
+            background:#198754;
+            width:25%;
+        }
+
+        .form-control{
+            border-radius:12px;
+            padding:12px;
+        }
+
+        .btn{
+            border-radius:12px;
+            padding:10px 25px;
+        }
+
+        .step{
+            display:none;
+        }
+
+        .step.active{
+            display:block;
+        }
+
+        .error{
+            color:red;
+            font-size:14px;
+        }
+
+        .veg-box{
+            border:1px solid #ddd;
+            padding:15px;
+            border-radius:15px;
+            cursor:pointer;
+        }
+
+        .veg-box:hover{
+            border-color:#198754;
+        }
+    </style>
+</head>
+<body>
+
+<section class="register-section">
+
+    <div class="register-card">
+
+        <h1 class="register-title">
+            Farmer Registration
+        </h1>
+
+        <p class="register-subtitle">
+            Join Farm2Hotel as a trusted supplier
+        </p>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <form id="farmerForm">
+
+            <!-- STEP 1 -->
+            <div class="step active" id="step1">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label>Full Name</label>
+
+                        <input type="text"
+                        id="fullName"
+                        class="form-control">
+
+                        <small class="error"
+                        id="nameError"></small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Mobile Number</label>
+
+                        <input type="tel"
+                        id="mobile"
+                        class="form-control">
+
+                        <small class="error"
+                        id="mobileError"></small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Email</label>
+
+                        <input type="email"
+                        id="email"
+                        class="form-control">
+
+                        <small class="error"
+                        id="emailError"></small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Aadhaar Number</label>
+
+                        <input type="text"
+                        id="aadhaar"
+                        class="form-control">
+
+                        <small class="error"
+                        id="aadhaarError"></small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Password</label>
+
+                        <input type="password"
+                        id="password"
+                        class="form-control">
+
+                        <small class="error"
+                        id="passwordError"></small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Confirm Password</label>
+
+                        <input type="password"
+                        id="confirmPassword"
+                        class="form-control">
+
+                        <small class="error"
+                        id="confirmPasswordError"></small>
+                    </div>
+
+                </div>
+
+                <div class="text-end mt-4">
+                    <button type="button"
+                    class="btn btn-success"
+                    onclick="nextStep1()">
+
+                        Next →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+            <div class="step" id="step2">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label>Farm Name</label>
+
+                        <input type="text"
+                        class="form-control"
+                        id="farmName">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Farm Area (Acres)</label>
+
+                        <input type="number"
+                        class="form-control"
+                        id="farmArea">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>District</label>
+
+                        <input type="text"
+                        class="form-control"
+                        id="district">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Village</label>
+
+                        <input type="text"
+                        class="form-control"
+                        id="village">
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+
+                    <button type="button"
+                    class="btn btn-dark"
+                    onclick="prevStep()">
+
+                        ← Back
+                    </button>
+
+                    <button type="button"
+                    class="btn btn-success"
+                    onclick="nextStep2()">
+
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+            <!-- STEP 3 -->
+<div class="step" id="step3">
+
+    <h4 class="mb-4">
+        Vegetables & Supply Details
+    </h4>
+
+    <div class="row g-3">
+
+        <!-- Vegetables -->
+
+        <div class="col-12">
+            <label class="mb-3 fw-bold">
+                Select Vegetables You Supply
+            </label>
+
+            <div class="row g-3">
+
+                <div class="col-md-3">
+                    <div class="veg-box">
+                        <input type="checkbox"
+                        value="Tomato"
+                        id="tomato">
+
+                        Tomato 🍅
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="veg-box">
+                        <input type="checkbox"
+                        value="Onion"
+                        id="onion">
+
+                        Onion 🧅
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="veg-box">
+                        <input type="checkbox"
+                        value="Potato"
+                        id="potato">
+
+                        Potato 🥔
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="veg-box">
+                        <input type="checkbox"
+                        value="Brinjal"
+                        id="brinjal">
+
+                        Brinjal 🍆
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Quantity -->
+
+        <div class="col-md-6">
+            <label>
+                Daily Supply Capacity (KG)
+            </label>
+
+            <input type="number"
+            class="form-control"
+            id="dailySupply"
+            placeholder="Example: 300">
+        </div>
+
+
+        <!-- Delivery -->
+
+        <div class="col-md-6">
+            <label>
+                Delivery Available
+            </label>
+
+            <select class="form-control"
+            id="delivery">
+
+                <option value="">
+                    Select
+                </option>
+
+                <option>
+                    Yes
+                </option>
+
+                <option>
+                    No
+                </option>
+
+            </select>
+        </div>
+
+
+        <!-- Buyer Type -->
+
+        <div class="col-md-6">
+            <label>
+                Preferred Buyers
+            </label>
+
+            <select class="form-control"
+            id="buyerType">
+
+                <option value="">
+                    Select
+                </option>
+
+                <option>
+                    Hotels
+                </option>
+
+                <option>
+                    Restaurants
+                </option>
+
+                <option>
+                    Both
+                </option>
+
+            </select>
+        </div>
+
+
+        <!-- Harvest -->
+
+        <div class="col-md-6">
+            <label>
+                Harvest Frequency
+            </label>
+
+            <select class="form-control"
+            id="harvest">
+
+                <option value="">
+                    Select
+                </option>
+
+                <option>
+                    Daily
+                </option>
+
+                <option>
+                    Weekly
+                </option>
+
+                <option>
+                    Monthly
+                </option>
+
+            </select>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+
+        <button type="button"
+        class="btn btn-dark"
+        onclick="backStep2()">
+
+            ← Back
+        </button>
+
+        <button type="button"
+        class="btn btn-success"
+        onclick="nextStep3()">
+
+            Next →
+        </button>
+
+    </div>
+
+</div>
+<!-- STEP 4 -->
+<div class="step" id="step4">
+
+    <h4 class="mb-4">
+        Verification & Documents
+    </h4>
+
+    <div class="row g-3">
+
+        <!-- Aadhaar Upload -->
+
+        <div class="col-md-6">
+            <label>
+                Upload Aadhaar Card
+            </label>
+
+            <input type="file"
+            class="form-control"
+            id="aadhaarFile"
+            accept="image/*,.pdf">
+        </div>
+
+
+        <!-- Farm Photo -->
+
+        <div class="col-md-6">
+            <label>
+                Upload Farm Photo
+            </label>
+
+            <input type="file"
+            class="form-control"
+            id="farmPhoto"
+            accept="image/*">
+        </div>
+
+
+        <!-- Account Holder -->
+
+        <div class="col-md-6">
+            <label>
+                Account Holder Name
+            </label>
+
+            <input type="text"
+            class="form-control"
+            id="accountHolder"
+            placeholder="Enter account holder name">
+        </div>
+
+
+        <!-- Account Number -->
+
+        <div class="col-md-6">
+            <label>
+                Account Number
+            </label>
+
+            <input type="text"
+            class="form-control"
+            id="accountNumber"
+            placeholder="Enter account number">
+        </div>
+
+
+        <!-- IFSC -->
+
+        <div class="col-md-6">
+            <label>
+                IFSC Code
+            </label>
+
+            <input type="text"
+            class="form-control"
+            id="ifsc"
+            placeholder="Example: SBIN0001234">
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+
+        <button type="button"
+        class="btn btn-dark"
+        onclick="backStep3()">
+
+            ← Back
+        </button>
+
+        <button type="button"
+        class="btn btn-success"
+        onclick="nextStep4()">
+
+            Next →
+        </button>
+
+    </div>
+
+</div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<script>
+
+function nextStep1(){
+
+    let valid = true;
+
+    let fullName =
+    document.getElementById("fullName").value.trim();
+
+    let mobile =
+    document.getElementById("mobile").value.trim();
+
+    let email =
+    document.getElementById("email").value.trim();
+
+    let aadhaar =
+    document.getElementById("aadhaar").value.trim();
+
+    let password =
+    document.getElementById("password").value;
+
+    let confirmPassword =
+    document.getElementById("confirmPassword").value;
+
+
+    document.getElementById("nameError").innerText="";
+    document.getElementById("mobileError").innerText="";
+    document.getElementById("emailError").innerText="";
+    document.getElementById("aadhaarError").innerText="";
+    document.getElementById("passwordError").innerText="";
+    document.getElementById("confirmPasswordError").innerText="";
+
+    const nameRegex = /^[A-Za-z\s]+$/;
+
+    if(!nameRegex.test(fullName)){
+        document.getElementById("nameError")
+        .innerText="Only letters allowed";
+        valid=false;
+    }
+
+    if(mobile.length!==10 || isNaN(mobile)){
+        document.getElementById("mobileError")
+        .innerText="Enter valid mobile number";
+        valid=false;
+    }
+
+    if(aadhaar.length!==12 || isNaN(aadhaar)){
+        document.getElementById("aadhaarError")
+        .innerText="Enter valid Aadhaar";
+        valid=false;
+    }
+
+    if(password.length<6){
+        document.getElementById("passwordError")
+        .innerText="Minimum 6 characters";
+        valid=false;
+    }
+
+    if(password!==confirmPassword){
+        document.getElementById("confirmPasswordError")
+        .innerText="Passwords not matching";
+        valid=false;
+    }
+
+    if(valid){
+        document.getElementById("step1")
+        .classList.remove("active");
+
+        document.getElementById("step2")
+        .classList.add("active");
+
+        document.getElementById("progressBar")
+        .style.width="50%";
+    }
+}
+
+function prevStep(){
+    document.getElementById("step2")
+    .classList.remove("active");
+
+    document.getElementById("step1")
+    .classList.add("active");
+
+    document.getElementById("progressBar")
+    .style.width="25%";
+}
+
+function nextStep2(){
+
+    let farmName =
+    document.getElementById("farmName")
+    .value.trim();
+
+    let farmArea =
+    document.getElementById("farmArea")
+    .value.trim();
+
+    let district =
+    document.getElementById("district")
+    .value.trim();
+
+    let village =
+    document.getElementById("village")
+    .value.trim();
+
+    if(
+        farmName==="" ||
+        farmArea==="" ||
+        district==="" ||
+        village===""
+    ){
+        alert(
+        "Please fill all farm details"
+        );
+
+        return;
+    }
+
+    document.getElementById("step2")
+    .classList.remove("active");
+
+    document.getElementById("step3")
+    .classList.add("active");
+
+    document.getElementById("progressBar")
+    .style.width="75%";
+}
+function backStep2(){
+
+    document.getElementById("step3")
+    .classList.remove("active");
+
+    document.getElementById("step2")
+    .classList.add("active");
+
+    document.getElementById("progressBar")
+    .style.width="50%";
+}
+
+function nextStep3(){
+
+    let dailySupply =
+    document.getElementById("dailySupply")
+    .value.trim();
+
+    let delivery =
+    document.getElementById("delivery")
+    .value;
+
+    let buyerType =
+    document.getElementById("buyerType")
+    .value;
+
+    let harvest =
+    document.getElementById("harvest")
+    .value;
+
+    if(
+        dailySupply==="" ||
+        delivery==="" ||
+        buyerType==="" ||
+        harvest===""
+    ){
+        alert(
+        "Please complete supply details"
+        );
+
+        return;
+    }
+
+    document.getElementById("step3")
+    .classList.remove("active");
+
+    document.getElementById("step4")
+    .classList.add("active");
+
+    document.getElementById("progressBar")
+    .style.width="90%";
+}
+function backStep3(){
+
+    document.getElementById("step4")
+    .classList.remove("active");
+
+    document.getElementById("step3")
+    .classList.add("active");
+
+    document.getElementById("progressBar")
+    .style.width="75%";
+}
+
+
+async function nextStep4(){
+
+    let aadhaarFile =
+    document.getElementById(
+    "aadhaarFile"
+    ).files.length;
+
+    let farmPhoto =
+    document.getElementById(
+    "farmPhoto"
+    ).files.length;
+
+    let accountHolder =
+    document.getElementById(
+    "accountHolder"
+    ).value.trim();
+
+    let accountNumber =
+    document.getElementById(
+    "accountNumber"
+    ).value.trim();
+
+    let ifsc =
+    document.getElementById(
+    "ifsc"
+    ).value.trim();
+
+    if(
+        aadhaarFile===0 ||
+        farmPhoto===0 ||
+        accountHolder==="" ||
+        accountNumber==="" ||
+        ifsc===""
+
+    ){
+        alert(
+        "Please complete verification"
+        );
+
+        return;
+    }
+
+
+    try{
+
+        // FORM DATA
+
+        const full_name =
+        document.getElementById(
+        "fullName"
+        ).value.trim();
+
+        const mobile =
+        document.getElementById(
+        "mobile"
+        ).value.trim();
+
+        const email =
+        document.getElementById(
+        "email"
+        ).value.trim();
+
+        const aadhaar =
+        document.getElementById(
+        "aadhaar"
+        ).value.trim();
+
+        const password =
+        document.getElementById(
+        "password"
+        ).value.trim();
+
+        const farm_name =
+        document.getElementById(
+        "farmName"
+        ).value.trim();
+
+        const farm_area =
+        document.getElementById(
+        "farmArea"
+        ).value.trim();
+
+        const district =
+        document.getElementById(
+        "district"
+        ).value.trim();
+
+        const village =
+        document.getElementById(
+        "village"
+        ).value.trim();
+
+
+        // API CALL
+
+        const response =
+        await fetch(
+
+        "http://localhost:5000/api/farmers/register",
+
+        {
+
+            method:"POST",
+
+            headers:{
+
+                "Content-Type":
+                "application/json"
+
+            },
+
+            body: JSON.stringify({
+
+                full_name,
+                mobile,
+                email,
+                aadhaar,
+                password,
+                farm_name,
+                farm_area,
+                district,
+                village
+
+            })
+
+        }
+
+        );
+
+
+        const data =
+        await response.json();
+
+
+        alert(
+        data.message
+        );
+
+
+        if(response.ok){
+
+            window.location.href =
+            "farmer-login.html";
+
+        }
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        alert(
+        "Server Error ❌"
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

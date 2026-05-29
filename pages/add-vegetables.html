@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Add Vegetable |
+Farm2Hotel
+</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:
+linear-gradient(
+135deg,
+#eefbf3,
+#ffffff
+);
+min-height:100vh;
+}
+
+.wrapper{
+padding:40px;
+max-width:1400px;
+margin:auto;
+}
+
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.title-box h1{
+font-size:42px;
+font-weight:700;
+color:#198754;
+margin-bottom:5px;
+}
+
+.title-box p{
+color:#666;
+font-size:16px;
+}
+
+.back-btn{
+background:#111;
+color:#fff;
+padding:14px 22px;
+border-radius:14px;
+text-decoration:none;
+font-weight:600;
+}
+
+.form-card{
+background:#fff;
+border-radius:35px;
+padding:40px;
+box-shadow:
+0 15px 40px
+rgba(0,0,0,0.08);
+}
+
+.section-title{
+font-size:24px;
+font-weight:700;
+margin-bottom:25px;
+color:#198754;
+}
+
+.form-label{
+font-weight:600;
+margin-bottom:10px;
+}
+
+.form-control,
+.form-select{
+padding:16px;
+border-radius:16px;
+border:1px solid #ddd;
+}
+
+.form-control:focus,
+.form-select:focus{
+box-shadow:none;
+border-color:#198754;
+}
+
+.upload-box{
+border:2px dashed #c7c7c7;
+border-radius:25px;
+padding:45px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+background:#fafafa;
+}
+
+.upload-box:hover{
+border-color:#198754;
+background:#f5fff9;
+}
+
+.upload-box i{
+font-size:55px;
+color:#198754;
+}
+
+.upload-box p{
+margin-top:15px;
+font-weight:500;
+color:#555;
+}
+
+.preview-image{
+width:180px;
+height:180px;
+border-radius:20px;
+object-fit:cover;
+margin-top:20px;
+display:none;
+border:4px solid #198754;
+}
+
+.location-card{
+background:#effcf5;
+padding:25px;
+border-radius:25px;
+text-align:center;
+margin-top:25px;
+}
+
+.location-btn{
+background:#198754;
+border:none;
+padding:14px 24px;
+border-radius:14px;
+font-weight:600;
+color:#fff;
+}
+
+.location-btn:hover{
+background:#146c43;
+}
+
+#locationStatus{
+margin-top:18px;
+font-weight:600;
+color:#198754;
+}
+
+.btn-save{
+margin-top:35px;
+background:#198754;
+width:100%;
+padding:18px;
+font-size:20px;
+font-weight:700;
+border:none;
+border-radius:18px;
+color:#fff;
+transition:.3s;
+}
+
+.btn-save:hover{
+background:#146c43;
+transform:translateY(-2px);
+}
+
+.tag-box{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+
+.tag{
+background:#e8fff1;
+padding:10px 18px;
+border-radius:30px;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
+}
+
+.tag:hover{
+background:#198754;
+color:#fff;
+}
+
+@media(max-width:768px){
+
+.wrapper{
+padding:20px;
+}
+
+.form-card{
+padding:25px;
+}
+
+.title-box h1{
+font-size:30px;
+}
+
+}
+
+.dashboard-wrapper{
+display:flex;
+}
+
+.sidebar{
+width:280px;
+height:100vh;
+position:fixed;
+left:0;
+top:0;
+}
+
+.main-content{
+margin-left:280px;
+width:calc(100% - 280px);
+padding:30px;
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+width:280px;
+
+background:
+linear-gradient(
+180deg,
+#198754,
+#0f5132
+);
+
+color:#fff;
+
+padding:30px 20px;
+
+position:fixed;
+
+left:0;
+top:0;
+
+height:100vh;
+
+overflow-y:auto;
+
+z-index:999;
+
+}
+
+.logo-box{
+margin-bottom:40px;
+}
+
+.logo-box h2{
+font-weight:700;
+font-size:32px;
+color:#fff;
+}
+
+.logo-box p{
+opacity:.8;
+margin-top:8px;
+color:#fff;
+}
+
+.sidebar-menu{
+list-style:none;
+padding:0;
+}
+
+.sidebar-menu li{
+margin-bottom:12px;
+}
+
+.sidebar-menu a{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+padding:16px 18px;
+
+border-radius:18px;
+
+color:#fff;
+
+transition:.3s;
+
+font-size:16px;
+font-weight:500;
+
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active{
+
+background:
+rgba(255,255,255,.15);
+
+}
+
+.sidebar-menu i{
+font-size:18px;
+}
+
+
+/* PAGE LAYOUT */
+
+.dashboard-wrapper{
+display:flex;
+}
+
+.main-content{
+
+margin-left:280px;
+
+width:calc(100% - 280px);
+
+min-height:100vh;
+
+padding:30px;
+
+overflow-y:auto;
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+<aside class="sidebar">
+
+<div class="logo-box">
+
+<h2>
+🌱 Farm2Hotel
+</h2>
+
+<p>
+Farmer Dashboard
+</p>
+
+</div>
+
+<ul class="sidebar-menu">
+
+<li>
+<a href="farmer-dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+Dashboard
+
+</a>
+</li>
+
+<li>
+<a href="add-vegetables.html"
+style="
+background:rgba(255,255,255,.15);
+">
+
+<i class="fa-solid fa-seedling"></i>
+Add Vegetables
+
+</a>
+</li>
+
+<li>
+<a href="my-listings.html">
+
+<i class="fa-solid fa-box"></i>
+My Listings
+
+</a>
+</li>
+
+<li>
+<a href="farmer-orders.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+
+</a>
+</li>
+
+<li>
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-column"></i>
+Analytics
+
+</a>
+</li>
+
+<li>
+<a href="nearby-hotels.html">
+
+<i class="fa-solid fa-location-dot"></i>
+Nearby Hotels
+
+</a>
+</li>
+
+<li>
+<a href="revenue.html">
+
+<i class="fa-solid fa-wallet"></i>
+Revenue
+
+</a>
+</li>
+
+<li>
+<a href="messages.html">
+
+<i class="fa-solid fa-message"></i>
+Messages
+
+</a>
+</li>
+
+<li>
+<a href="notifications.html">
+
+<i class="fa-solid fa-bell"></i>
+Notifications
+
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+Profile
+
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="logout()">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+<main class="main-content">
+
+<div class="wrapper">
+<div class="top-bar">
+
+<div class="title-box">
+
+<h1>
+Add Fresh Vegetables 🌱
+</h1>
+
+<p>
+Sell directly to hotels & restaurants
+with smart delivery
+</p>
+
+</div>
+
+<a href="farmer-dashboard.html"
+class="back-btn">
+
+Back Dashboard
+
+</a>
+
+</div>
+
+<div class="form-card">
+
+<h3 class="section-title">
+Vegetable Details
+</h3>
+
+<div class="row g-4">
+
+<div class="col-md-6">
+
+<label class="form-label">
+Vegetable Name
+</label>
+
+<input type="text"
+id="vegetableName"
+class="form-control"
+placeholder="Tomato">
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+Category
+</label>
+
+<select
+id="category"
+class="form-select">
+
+<option value="">
+Select Category
+</option>
+
+<option>
+Leafy Vegetable
+</option>
+
+<option>
+Root Vegetable
+</option>
+
+<option>
+Seasonal Vegetable
+</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+Quantity (KG)
+</label>
+
+<input type="number"
+id="quantity"
+class="form-control">
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+Price Per KG ₹
+</label>
+
+<input type="number"
+id="price"
+class="form-control">
+
+</div>
+<div class="col-md-6">
+
+<label class="form-label">
+Minimum Order (KG)
+</label>
+
+<input type="number"
+id="minOrder"
+class="form-control"
+placeholder="Minimum order">
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+Harvest Date
+</label>
+
+<input type="date"
+id="harvestDate"
+class="form-control">
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+Delivery Available
+</label>
+
+<select
+id="delivery"
+class="form-select">
+
+<option value="">
+Select
+</option>
+
+<option>
+Yes
+</option>
+
+<option>
+No
+</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+Delivery Radius (KM)
+</label>
+
+<input type="number"
+id="radius"
+class="form-control"
+placeholder="25">
+
+</div>
+
+<div class="col-12">
+
+<label class="form-label">
+Product Tags
+</label>
+
+<div class="tag-box">
+
+<div class="tag">
+Organic
+</div>
+
+<div class="tag">
+Fresh Harvest
+</div>
+
+<div class="tag">
+Chemical Free
+</div>
+
+<div class="tag">
+Fast Delivery
+</div>
+
+</div>
+
+</div>
+
+<div class="col-12">
+
+<label class="form-label">
+Upload Vegetable Image
+</label>
+
+<div class="upload-box"
+onclick=
+"document.getElementById('vegImage').click()">
+
+<i class=
+"fa-solid fa-cloud-arrow-up">
+</i>
+
+<p>
+Click to Upload
+Vegetable Image
+</p>
+
+<input
+type="file"
+id="vegImage"
+hidden
+accept="image/*"
+onchange=
+"previewImage(event)">
+
+<img
+id="preview"
+class=
+"preview-image">
+
+</div>
+
+</div>
+
+<div class="col-12">
+
+<div class=
+"location-card">
+
+<button
+class=
+"location-btn"
+
+onclick=
+"getLocation()">
+
+Get Live
+Location 📍
+
+</button>
+
+<div
+id=
+"locationStatus">
+
+Location not
+added
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-12">
+
+<button
+class=
+"btn-save"
+
+onclick=
+"saveVegetable()">
+
+Add Vegetable 🚀
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let latitude = "";
+let longitude = "";
+
+
+// IMAGE PREVIEW
+
+function previewImage(
+event
+){
+
+const preview =
+document.getElementById(
+"preview"
+);
+
+preview.src =
+URL.createObjectURL(
+event.target.files[0]
+);
+
+preview.style.display =
+"block";
+
+}
+
+
+// LIVE LOCATION
+
+function getLocation(){
+
+if(
+navigator.geolocation
+){
+
+navigator.geolocation
+.getCurrentPosition(
+
+function(position){
+
+latitude =
+position.coords
+.latitude;
+
+longitude =
+position.coords
+.longitude;
+
+document
+.getElementById(
+"locationStatus"
+)
+.innerHTML =
+
+`
+✅ Location Added
+
+<br><br>
+
+Latitude:
+${latitude}
+
+<br>
+
+Longitude:
+${longitude}
+`;
+
+},
+
+function(){
+
+alert(
+"Location Permission Denied ❌"
+);
+
+}
+
+);
+
+}
+
+else{
+
+alert(
+"Geolocation not supported"
+);
+
+}
+
+}
+
+
+// SAVE VEGETABLE
+
+async function
+saveVegetable(){
+
+const farmer =
+JSON.parse(
+
+localStorage
+.getItem(
+"farmer"
+)
+
+);
+
+if(!farmer){
+
+alert(
+"Please Login First"
+);
+
+window.location.href =
+"farmer-login.html";
+
+return;
+
+}
+
+let vegetableName =
+document
+.getElementById(
+"vegetableName"
+)
+.value.trim();
+
+let category =
+document
+.getElementById(
+"category"
+)
+.value;
+
+let quantity =
+document
+.getElementById(
+"quantity"
+)
+.value;
+
+let price =
+document
+.getElementById(
+"price"
+)
+.value;
+
+let minOrder =
+document
+.getElementById(
+"minOrder"
+)
+.value;
+
+let harvestDate =
+document
+.getElementById(
+"harvestDate"
+)
+.value;
+
+let delivery =
+document
+.getElementById(
+"delivery"
+)
+.value;
+
+let radius =
+document
+.getElementById(
+"radius"
+)
+.value;
+
+let image =
+document
+.getElementById(
+"vegImage"
+)
+.files[0];
+
+if(
+
+!vegetableName ||
+!category ||
+!quantity ||
+!price ||
+!minOrder ||
+!harvestDate ||
+!delivery ||
+!radius ||
+!image
+
+){
+
+alert(
+"Please fill all fields"
+);
+
+return;
+
+}
+
+const formData =
+new FormData();
+
+formData.append(
+"farmer_id",
+farmer.id
+);
+
+formData.append(
+"vegetable_name",
+vegetableName
+);
+
+formData.append(
+"category",
+category
+);
+
+formData.append(
+"quantity",
+quantity
+);
+
+formData.append(
+"price",
+price
+);
+
+formData.append(
+"min_order",
+minOrder
+);
+
+formData.append(
+"harvest_date",
+harvestDate
+);
+
+formData.append(
+"delivery",
+delivery
+);
+
+formData.append(
+"delivery_radius",
+radius
+);
+
+formData.append(
+"description",
+"Fresh Vegetable"
+);
+
+formData.append(
+"image",
+image
+);
+
+formData.append(
+"latitude",
+latitude
+);
+
+formData.append(
+"longitude",
+longitude
+);
+
+try{
+
+const response =
+await fetch(
+
+"http://localhost:5000/api/vegetables/add",
+
+{
+method:"POST",
+body:formData
+}
+
+);
+
+const data =
+await response.json();
+
+alert(
+data.message
+);
+
+if(response.ok){
+
+window.location.href =
+"farmer-dashboard.html";
+
+}
+
+}
+
+catch(error){
+
+console.log(
+error
+);
+
+alert(
+"Server Error ❌"
+);
+
+}
+
+}
+
+</script>
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+</html>

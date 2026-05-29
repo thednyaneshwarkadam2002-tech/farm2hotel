@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width, initial-scale=1.0">
+
+<title>
+My Listings | Farm2Hotel
+</title>
+
+<link
+href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link
+href=
+"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f4f7fb;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+.header{
+background:
+linear-gradient(
+135deg,
+#198754,
+#146c43
+);
+
+padding:25px 40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+color:#fff;
+
+box-shadow:
+0 5px 20px
+rgba(0,0,0,.1);
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+}
+
+.back-btn{
+
+text-decoration:none;
+
+background:#fff;
+color:#198754;
+
+padding:12px 22px;
+
+border-radius:14px;
+
+font-weight:600;
+
+transition:.3s;
+}
+
+.back-btn:hover{
+transform:translateY(-2px);
+}
+
+/* PAGE */
+
+.container-box{
+padding:40px;
+}
+
+.top-section{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:35px;
+
+flex-wrap:wrap;
+gap:20px;
+}
+
+.title-box h1{
+font-size:38px;
+font-weight:700;
+}
+
+.title-box p{
+color:#666;
+margin-top:5px;
+}
+
+.search-box{
+position:relative;
+width:350px;
+}
+
+.search-box input{
+
+width:100%;
+
+padding:
+16px
+20px
+16px
+50px;
+
+border:none;
+outline:none;
+
+background:#fff;
+
+border-radius:18px;
+
+box-shadow:
+0 5px 20px
+rgba(0,0,0,.08);
+
+}
+
+.search-box i{
+
+position:absolute;
+
+top:50%;
+left:18px;
+
+transform:
+translateY(-50%);
+
+color:#888;
+}
+
+/* CARD */
+
+.veg-card{
+
+background:#fff;
+
+border-radius:30px;
+
+overflow:hidden;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.06);
+
+transition:.3s;
+
+height:100%;
+}
+
+.veg-card:hover{
+
+transform:
+translateY(-8px);
+
+}
+
+.veg-card img{
+
+width:100%;
+height:240px;
+
+object-fit:cover;
+}
+
+.veg-content{
+padding:24px;
+}
+
+.veg-content h3{
+font-weight:700;
+}
+
+.price{
+font-size:24px;
+font-weight:700;
+color:#198754;
+}
+
+.stock-good{
+color:#198754;
+font-weight:600;
+}
+
+.stock-low{
+color:#dc3545;
+font-weight:600;
+}
+
+.action-btn{
+border:none;
+padding:12px;
+border-radius:14px;
+font-weight:600;
+width:100%;
+transition:.3s;
+}
+
+.edit-btn{
+background:#ffc107;
+}
+
+.delete-btn{
+background:#dc3545;
+color:#fff;
+}
+
+.action-btn:hover{
+transform:scale(1.03);
+}
+
+/* EMPTY */
+
+.empty-box{
+
+background:#fff;
+
+padding:60px;
+
+border-radius:30px;
+
+text-align:center;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.05);
+}
+
+.empty-box i{
+font-size:70px;
+color:#198754;
+margin-bottom:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.header{
+padding:20px;
+flex-direction:column;
+gap:15px;
+}
+
+.container-box{
+padding:20px;
+}
+
+.title-box h1{
+font-size:28px;
+}
+
+.search-box{
+width:100%;
+}
+
+}
+/* SIDEBAR */
+
+.sidebar{
+
+width:280px;
+
+background:
+linear-gradient(
+180deg,
+#198754,
+#0f5132
+);
+
+color:#fff;
+
+padding:30px 20px;
+
+position:fixed;
+
+left:0;
+top:0;
+
+height:100vh;
+
+overflow-y:auto;
+
+z-index:999;
+
+}
+
+.logo-box{
+margin-bottom:40px;
+}
+
+.logo-box h2{
+font-weight:700;
+font-size:32px;
+color:#fff;
+}
+
+.logo-box p{
+opacity:.8;
+margin-top:8px;
+color:#fff;
+}
+
+.sidebar-menu{
+list-style:none;
+padding:0;
+}
+
+.sidebar-menu li{
+margin-bottom:12px;
+}
+
+.sidebar-menu a{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+padding:16px 18px;
+
+border-radius:18px;
+
+color:#fff;
+
+transition:.3s;
+
+font-size:16px;
+font-weight:500;
+
+}
+
+.sidebar-menu a:hover{
+
+background:
+rgba(255,255,255,.15);
+
+}
+
+.sidebar-menu i{
+font-size:18px;
+}
+
+
+/* PAGE LAYOUT */
+
+.dashboard-wrapper{
+display:flex;
+}
+
+.main-content{
+
+margin-left:280px;
+
+width:calc(100% - 280px);
+
+min-height:100vh;
+
+overflow-y:auto;
+
+padding:30px;
+
+display:block;
+
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="dashboard-wrapper">
+
+<aside class="sidebar">
+
+PASTE SAME SIDEBAR CODE HERE
+
+<aside class="sidebar">
+
+<div class="logo-box">
+
+<h2>
+🌱 Farm2Hotel
+</h2>
+
+<p>
+Farmer Dashboard
+</p>
+
+</div>
+
+<ul class="sidebar-menu">
+
+<li>
+<a href="farmer-dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+Dashboard
+
+</a>
+</li>
+
+<li>
+<a href="add-vegetables.html">
+
+<i class="fa-solid fa-seedling"></i>
+Add Vegetables
+
+</a>
+</li>
+
+<li>
+<a href="my-listings.html">
+
+<i class="fa-solid fa-box"></i>
+My Listings
+
+</a>
+</li>
+
+<li>
+<a href="farmer-orders.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+
+</a>
+</li>
+
+<li>
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-column"></i>
+Analytics
+
+</a>
+</li>
+
+<li>
+<a href="nearby-hotels.html">
+
+<i class="fa-solid fa-location-dot"></i>
+Nearby Hotels
+
+</a>
+</li>
+
+<li>
+<a href="revenue.html">
+<i class="fa-solid fa-wallet"></i>
+Revenue
+
+</a>
+</li>
+
+<li>
+<a href="messages.html">
+
+<i class="fa-solid fa-message"></i>
+Messages
+
+</a>
+</li>
+
+<li>
+<a href="notifications.html">
+
+<i class="fa-solid fa-bell"></i>
+Notifications
+
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+Profile
+
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="logout()">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+</aside>
+
+<main class="main-content">
+
+
+<!-- CONTENT -->
+
+<div class="container-box">
+
+<div class="top-section">
+
+<div class="title-box">
+
+<h1>
+My Listings 🌱
+</h1>
+
+<p>
+Manage all your vegetables professionally
+</p>
+
+</div>
+
+<div class="search-box">
+
+<i class="fa-solid fa-search"></i>
+
+<input
+type="text"
+id="searchInput"
+placeholder=
+"Search vegetables...">
+
+</div>
+
+</div>
+
+
+<div
+class="row"
+id="vegetableList">
+
+</div>
+
+</div>
+
+
+<script>
+
+// ==========================
+// LOGIN CHECK
+// ==========================
+
+const loggedFarmer =
+JSON.parse(
+localStorage.getItem(
+"farmer"
+)
+);
+
+if(!loggedFarmer){
+
+window.location.href =
+"./farmer-login.html";
+
+}
+
+
+// ==========================
+// LOAD VEGETABLES
+// ==========================
+
+async function
+loadVegetables(){
+
+try{
+
+const response =
+await fetch(
+
+"http://localhost:5000/api/vegetables"
+
+);
+
+const vegetables =
+await response.json();
+
+const myVegetables =
+vegetables.filter(
+
+veg =>
+
+veg.farmer_id ==
+loggedFarmer.id
+
+);
+
+let html = "";
+
+if(
+myVegetables.length
+=== 0
+){
+
+html =
+`
+<div class="col-12">
+
+<div class="empty-box">
+
+<i class=
+"fa-solid fa-seedling">
+</i>
+
+<h3>
+No Vegetables Added
+</h3>
+
+<p class="text-muted">
+
+Start selling by
+adding vegetables
+
+</p>
+
+<a
+href="./add-vegetables.html"
+class=
+"btn btn-success mt-3 px-4">
+
+Add Vegetable
+
+</a>
+
+</div>
+
+</div>
+`;
+
+}
+
+myVegetables
+.forEach(veg=>{
+
+html +=
+`
+<div class=
+"col-lg-4
+col-md-6
+mb-4">
+
+<div class=
+"veg-card">
+
+<img
+src=
+"http://localhost:5000/uploads/${veg.image}"
+
+onerror=
+"this.src='https://via.placeholder.com/400x250?text=No+Image'">
+
+<div class=
+"veg-content">
+
+<h3>
+
+${veg.vegetable_name}
+
+</h3>
+
+<p class=
+"text-muted">
+
+${veg.category}
+
+</p>
+
+<div class=
+"price mb-2">
+
+₹${veg.price}/KG
+
+</div>
+
+<p>
+
+Stock:
+<b>
+
+${veg.quantity}
+KG
+
+</b>
+
+</p>
+
+${
+veg.quantity < 20
+
+?
+
+`<p class=
+"stock-low">
+
+⚠️ Low Stock
+
+</p>`
+
+:
+
+`<p class=
+"stock-good">
+
+✅ Available
+
+</p>`
+
+}
+
+<div class=
+"d-flex gap-2 mt-3">
+
+<button
+class=
+"action-btn edit-btn"
+
+onclick=
+"editVegetable(${veg.id})">
+
+Edit
+
+</button>
+
+<button
+class=
+"action-btn delete-btn"
+
+onclick=
+"deleteVegetable(${veg.id})">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"vegetableList"
+)
+.innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// SEARCH
+// ==========================
+
+document
+.getElementById(
+"searchInput"
+)
+
+.addEventListener(
+
+"keyup",
+
+function(){
+
+const value =
+this.value
+.toLowerCase();
+
+const cards =
+document
+.querySelectorAll(
+".veg-card"
+);
+
+cards.forEach(card=>{
+
+const text =
+card.innerText
+.toLowerCase();
+
+card.parentElement
+.style.display =
+
+text.includes(value)
+
+?
+
+"block"
+
+:
+
+"none";
+
+});
+
+}
+
+);
+
+
+// ==========================
+// DELETE
+// ==========================
+
+async function
+deleteVegetable(id){
+
+const confirmDelete =
+confirm(
+"Delete Vegetable?"
+);
+
+if(!confirmDelete)
+return;
+
+try{
+
+await fetch(
+
+`http://localhost:5000/api/vegetables/delete/${id}`,
+
+{
+method:"DELETE"
+}
+
+);
+
+loadVegetables();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// EDIT
+// ==========================
+
+async function
+editVegetable(id){
+
+const newPrice =
+prompt(
+"Enter New Price"
+);
+
+if(!newPrice)
+return;
+
+const newQuantity =
+prompt(
+"Enter New Quantity"
+);
+
+if(!newQuantity)
+return;
+
+try{
+
+await fetch(
+
+`http://localhost:5000/api/vegetables/update/${id}`,
+
+{
+
+method:"PUT",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:
+JSON.stringify({
+
+price:
+newPrice,
+
+quantity:
+newQuantity
+
+})
+
+}
+
+);
+
+loadVegetables();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// PAGE LOAD
+// ==========================
+
+window.onload =
+function(){
+
+loadVegetables();
+
+};
+
+</script>
+</main>
+
+</div>
+</body>
+</html>

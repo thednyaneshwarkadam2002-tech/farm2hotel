@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width, initial-scale=1.0">
+
+<title>
+Analytics | Farm2Hotel
+</title>
+
+<link
+href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link
+href=
+"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:
+'Poppins',
+sans-serif;
+}
+
+body{
+
+background:
+#f5f7fb;
+
+}
+
+
+/* MAIN */
+
+.main-content{
+
+padding:35px;
+
+}
+
+
+/* HEADER */
+
+.page-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:35px;
+
+}
+
+.page-header h2{
+
+font-size:34px;
+font-weight:700;
+
+color:#1e293b;
+
+}
+
+.page-header p{
+
+color:#64748b;
+margin-top:5px;
+
+}
+
+.profile-box{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.profile-box img{
+
+width:60px;
+height:60px;
+
+border-radius:50%;
+
+border:3px solid #198754;
+
+object-fit:cover;
+
+}
+
+
+/* KPI */
+
+.analytics-card{
+
+background:#fff;
+
+padding:28px;
+
+border-radius:28px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.06);
+
+transition:.3s;
+
+height:100%;
+
+}
+
+.analytics-card:hover{
+
+transform:
+translateY(-6px);
+
+}
+
+.icon-box{
+
+width:65px;
+height:65px;
+
+border-radius:20px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:28px;
+
+margin-bottom:18px;
+
+background:
+rgba(25,135,84,.1);
+
+color:#198754;
+
+}
+
+.analytics-card h3{
+
+font-size:34px;
+font-weight:700;
+
+margin-bottom:5px;
+
+}
+
+.analytics-card p{
+
+margin:0;
+color:#64748b;
+
+}
+
+
+/* CHARTS */
+
+.chart-box{
+
+background:#fff;
+
+padding:30px;
+
+border-radius:30px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.06);
+
+margin-top:30px;
+
+}
+
+.chart-title{
+
+font-size:22px;
+font-weight:700;
+
+margin-bottom:25px;
+
+}
+
+
+/* INSIGHTS */
+
+.insights-box{
+
+background:
+linear-gradient(
+135deg,
+#198754,
+#157347
+);
+
+padding:35px;
+
+border-radius:35px;
+
+color:#fff;
+
+margin-top:30px;
+
+}
+
+.insights-box h4{
+
+font-weight:700;
+
+margin-bottom:20px;
+
+}
+
+.insight-item{
+
+background:
+rgba(255,255,255,.12);
+
+padding:18px 22px;
+
+border-radius:18px;
+
+margin-bottom:12px;
+
+font-size:15px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.page-header{
+
+flex-direction:column;
+align-items:flex-start;
+gap:20px;
+
+}
+
+.main-content{
+
+padding:20px;
+
+}
+
+}
+
+/* SIDEBAR */
+
+.dashboard-wrapper{
+display:flex;
+}
+
+.sidebar{
+
+width:280px;
+
+background:
+linear-gradient(
+180deg,
+#198754,
+#0f5132
+);
+
+color:#fff;
+
+padding:30px 20px;
+
+position:fixed;
+
+left:0;
+top:0;
+
+height:100vh;
+
+overflow-y:auto;
+
+z-index:999;
+
+}
+
+.logo-box{
+margin-bottom:40px;
+}
+
+.logo-box h2{
+font-weight:700;
+font-size:32px;
+color:#fff;
+}
+
+.logo-box p{
+opacity:.8;
+margin-top:8px;
+color:#fff;
+}
+
+.sidebar-menu{
+list-style:none;
+padding:0;
+}
+
+.sidebar-menu li{
+margin-bottom:12px;
+}
+
+.sidebar-menu a{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+padding:16px 18px;
+
+border-radius:18px;
+
+color:#fff;
+
+transition:.3s;
+
+font-size:16px;
+font-weight:500;
+
+}
+
+.sidebar-menu a:hover{
+
+background:
+rgba(255,255,255,.15);
+
+}
+
+.sidebar-menu i{
+font-size:18px;
+}
+
+/* MAIN CONTENT */
+
+.main-content{
+
+margin-left:280px;
+
+width:calc(100% - 280px);
+
+min-height:100vh;
+
+padding:35px;
+
+overflow-y:auto;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+<aside class="sidebar">
+
+<div class="logo-box">
+
+<h2>
+🌱 Farm2Hotel
+</h2>
+
+<p>
+Farmer Dashboard
+</p>
+
+</div>
+
+<ul class="sidebar-menu">
+
+<li>
+<a href="farmer-dashboard.html">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="add-vegetables.html">
+<i class="fa-solid fa-seedling"></i>
+Add Vegetables
+</a>
+</li>
+
+<li>
+<a href="my-listings.html">
+<i class="fa-solid fa-box"></i>
+My Listings
+</a>
+</li>
+
+<li>
+<a href="farmer-orders.html">
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+</a>
+</li>
+
+<li>
+<a href="analytics.html">
+<i class="fa-solid fa-chart-column"></i>
+Analytics
+</a>
+</li>
+
+<li>
+<a href="nearby-hotels.html">
+<i class="fa-solid fa-location-dot"></i>
+Nearby Hotels
+</a>
+</li>
+
+<li>
+<a href="revenue.html">
+<i class="fa-solid fa-wallet"></i>
+Revenue
+</a>
+</li>
+
+<li>
+<a href="messages.html">
+<i class="fa-solid fa-message"></i>
+Messages
+</a>
+</li>
+
+<li>
+<a href="notifications.html">
+<i class="fa-solid fa-bell"></i>
+Notifications
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+<i class="fa-solid fa-user"></i>
+Profile
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="logout()">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+<main class="main-content">
+
+<!-- HEADER -->
+
+<div class="page-header">
+
+<div>
+
+<h2>
+📊 Farm Analytics
+</h2>
+
+<p>
+Track farm business growth & performance
+</p>
+
+</div>
+
+<div class="profile-box">
+
+<img
+id="profileImage"
+src=
+"https://ui-avatars.com/api/?name=Farmer&background=198754&color=fff">
+
+</div>
+
+</div>
+
+
+<!-- KPI CARDS -->
+
+<div class="row g-4">
+
+<div class="col-lg-4 col-md-6">
+
+<div class="analytics-card">
+
+<div class="icon-box">
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+</div>
+
+<h3 id="totalRevenue">
+₹0
+</h3>
+
+<p>
+Total Revenue
+</p>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6">
+
+<div class="analytics-card">
+
+<div class="icon-box">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+</div>
+
+<h3 id="totalOrders">
+0
+</h3>
+
+<p>
+Total Orders
+</p>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-6">
+
+<div class="analytics-card">
+
+<div class="icon-box">
+
+<i class="fa-solid fa-clock"></i>
+
+</div>
+
+<h3 id="pendingOrders">
+0
+</h3>
+
+<p>
+Pending Orders
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CHARTS -->
+
+<div class="row">
+
+<div class="col-lg-8">
+
+<div class="chart-box">
+
+<div class="chart-title">
+
+Revenue Analytics
+
+</div>
+
+<canvas
+id="revenueChart">
+</canvas>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-4">
+
+<div class="chart-box">
+
+<div class="chart-title">
+
+Orders Status
+
+</div>
+
+<canvas
+id="orderChart">
+</canvas>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- INSIGHTS -->
+
+<div class="insights-box">
+
+<h4>
+🚀 Business Insights
+</h4>
+
+<div
+id="insightContainer">
+
+<div class="insight-item">
+
+Loading analytics...
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src=
+"https://cdn.jsdelivr.net/npm/chart.js">
+</script>
+<script>
+
+// ==========================
+// LOGIN CHECK
+// ==========================
+
+const loggedFarmer =
+JSON.parse(
+localStorage.getItem(
+"farmer"
+)
+);
+
+if(!loggedFarmer){
+
+window.location.href =
+"farmer-login.html";
+
+}
+
+
+// ==========================
+// LOAD ANALYTICS
+// ==========================
+
+async function
+loadAnalytics(){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/orders/dashboard/${loggedFarmer.id}`
+
+);
+
+const data =
+await response.json();
+
+console.log(
+"Analytics:",
+data
+);
+
+
+// ==========================
+// UPDATE KPI
+// ==========================
+
+document
+.getElementById(
+"totalRevenue"
+)
+.innerText =
+
+`₹${data.revenue || 0}`;
+
+
+document
+.getElementById(
+"totalOrders"
+)
+.innerText =
+
+data.totalOrders || 0;
+
+
+document
+.getElementById(
+"pendingOrders"
+)
+.innerText =
+
+data.pendingOrders || 0;
+
+
+// ==========================
+// REVENUE CHART
+// ==========================
+
+new Chart(
+
+document.getElementById(
+"revenueChart"
+),
+
+{
+type:"bar",
+
+data:{
+
+labels:[
+"Revenue"
+],
+
+datasets:[{
+
+label:
+"Revenue",
+
+data:[
+data.revenue || 0
+],
+
+borderRadius:18
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+display:false
+}
+
+},
+
+scales:{
+
+y:{
+beginAtZero:true
+}
+
+}
+
+}
+
+}
+
+);
+
+
+// ==========================
+// ORDER CHART
+// ==========================
+
+new Chart(
+
+document.getElementById(
+"orderChart"
+),
+
+{
+type:"doughnut",
+
+data:{
+
+labels:[
+"Completed",
+"Pending"
+],
+
+datasets:[{
+
+data:[
+
+(data.totalOrders || 0)
+-
+(data.pendingOrders || 0),
+
+data.pendingOrders || 0
+
+],
+
+borderWidth:0
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+position:
+"bottom"
+}
+
+}
+
+}
+
+}
+
+);
+
+
+// ==========================
+// SMART INSIGHTS
+// ==========================
+
+let html = "";
+
+if(
+data.revenue > 10000
+){
+
+html +=
+
+`
+<div class=
+"insight-item">
+
+🔥 Amazing!
+Your revenue crossed
+₹10,000
+
+</div>
+`;
+
+}
+
+if(
+data.pendingOrders > 0
+){
+
+html +=
+
+`
+<div class=
+"insight-item">
+
+⚠️ You have
+
+<b>
+${data.pendingOrders}
+</b>
+
+pending orders
+
+</div>
+`;
+
+}
+
+if(
+data.totalOrders === 0
+){
+
+html +=
+
+`
+<div class=
+"insight-item">
+
+😕 No orders yet.
+Add more vegetables
+to attract buyers.
+
+</div>
+`;
+
+}
+
+if(html === ""){
+
+html =
+
+`
+<div class=
+"insight-item">
+
+✅ Farm performance
+looks stable.
+
+</div>
+`;
+
+}
+
+document
+.getElementById(
+"insightContainer"
+)
+.innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// LOAD FARMER PROFILE
+// ==========================
+
+async function
+loadFarmerProfile(){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/farmers/profile/${loggedFarmer.id}`
+
+);
+
+const farmer =
+await response.json();
+
+let image =
+
+farmer.profile_image
+
+?
+
+`http://localhost:5000/uploads/${farmer.profile_image}`
+
+:
+
+`https://ui-avatars.com/api/?name=${farmer.full_name}&background=198754&color=fff`;
+
+document
+.getElementById(
+"profileImage"
+)
+.src =
+image;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// PAGE LOAD
+// ==========================
+
+window.onload =
+function(){
+
+loadAnalytics();
+
+loadFarmerProfile();
+
+};
+
+</script>
+</main>
+
+</div>
+
+</body>
+</html>

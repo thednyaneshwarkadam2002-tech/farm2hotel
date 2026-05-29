@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width, initial-scale=1.0">
+
+<title>
+Farmer Dashboard | Farm2Hotel
+</title>
+
+<link
+href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link
+rel="stylesheet"
+href=
+"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<link
+href=
+"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:
+'Poppins',
+sans-serif;
+}
+
+body{
+
+background:
+#f4f7fb;
+
+overflow-x:hidden;
+
+}
+
+.dashboard-wrapper{
+display:flex;
+min-height:100vh;
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+width:280px;
+
+background:
+linear-gradient(
+180deg,
+#198754,
+#0f5132
+);
+
+color:#fff;
+
+padding:30px 20px;
+
+position:fixed;
+
+height:100vh;
+
+overflow-y:auto;
+
+}
+
+.logo-box{
+margin-bottom:40px;
+}
+
+.logo-box h2{
+font-weight:700;
+font-size:32px;
+}
+
+.logo-box p{
+opacity:.8;
+margin-top:8px;
+}
+
+.sidebar-menu{
+list-style:none;
+padding:0;
+}
+
+.sidebar-menu li{
+margin-bottom:12px;
+}
+
+.sidebar-menu a{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+text-decoration:none;
+
+padding:16px 18px;
+
+border-radius:18px;
+
+color:#fff;
+
+transition:.3s;
+
+font-size:16px;
+font-weight:500;
+
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu .active{
+
+background:
+rgba(255,255,255,.15);
+
+}
+
+.sidebar-menu i{
+font-size:18px;
+}
+
+
+/* MAIN */
+
+.main-content{
+
+margin-left:280px;
+
+width:100%;
+
+padding:30px;
+
+}
+
+
+/* NAVBAR */
+
+.top-navbar{
+
+background:#fff;
+
+padding:20px 30px;
+
+border-radius:24px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.05);
+
+}
+
+.search-box{
+
+position:relative;
+
+width:50%;
+
+}
+
+.search-box i{
+
+position:absolute;
+
+left:18px;
+top:50%;
+
+transform:
+translateY(-50%);
+
+color:#888;
+
+}
+
+.search-box input{
+
+width:100%;
+
+border:none;
+outline:none;
+
+background:#f4f7fb;
+
+padding:
+16px
+20px
+16px
+50px;
+
+border-radius:18px;
+
+font-size:15px;
+
+}
+
+.nav-right{
+
+display:flex;
+align-items:center;
+gap:18px;
+
+}
+
+.notification-box{
+
+width:55px;
+height:55px;
+
+background:#f4f7fb;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:22px;
+
+cursor:pointer;
+
+position:relative;
+
+}
+
+.notification-box span{
+
+position:absolute;
+
+top:5px;
+right:3px;
+
+background:red;
+color:#fff;
+
+width:22px;
+height:22px;
+
+border-radius:50%;
+
+font-size:12px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.top-profile{
+
+width:55px;
+height:55px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #198754;
+
+}
+
+
+/* HERO */
+
+.hero{
+
+margin-top:30px;
+
+background:
+linear-gradient(
+135deg,
+#198754,
+#157347
+);
+
+border-radius:35px;
+
+padding:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+flex-wrap:wrap;
+
+color:#fff;
+
+}
+
+.hero-profile{
+
+display:flex;
+align-items:center;
+gap:25px;
+
+}
+
+.hero-profile img{
+
+width:120px;
+height:120px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:
+5px solid
+rgba(255,255,255,.4);
+
+}
+
+.hero h1{
+
+font-size:40px;
+font-weight:700;
+
+}
+
+.hero p{
+opacity:.9;
+margin-top:8px;
+}
+
+.badges{
+
+display:flex;
+gap:12px;
+
+margin-top:16px;
+
+flex-wrap:wrap;
+
+}
+
+.badges span{
+
+background:
+rgba(255,255,255,.15);
+
+padding:12px 20px;
+
+border-radius:40px;
+
+font-size:14px;
+
+}
+
+.weather-card{
+
+background:
+rgba(255,255,255,.15);
+
+padding:30px;
+
+border-radius:24px;
+
+backdrop-filter:
+blur(20px);
+
+min-width:280px;
+
+}
+
+
+/* KPI */
+
+.stats{
+margin-top:30px;
+}
+
+.stat-card{
+
+background:#fff;
+
+padding:30px;
+
+border-radius:30px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.05);
+
+transition:.3s;
+
+height:100%;
+
+}
+
+.stat-card:hover{
+
+transform:
+translateY(-5px);
+
+}
+
+.stat-card i{
+
+font-size:30px;
+
+margin-bottom:16px;
+
+color:#198754;
+
+}
+
+.stat-card h2{
+
+font-size:36px;
+font-weight:700;
+
+}
+
+.stat-card p{
+
+margin:0;
+color:#777;
+
+}
+
+
+/* ALERT */
+
+.alert-box{
+
+margin-top:30px;
+
+background:#fff3cd;
+
+padding:25px;
+
+border-radius:25px;
+
+}
+
+
+/* SECTION */
+
+.section-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.section-header h3{
+font-weight:700;
+}
+
+
+/* VEGETABLE CARD */
+
+.veg-card{
+
+background:#fff;
+
+border-radius:30px;
+
+overflow:hidden;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.06);
+
+height:100%;
+
+transition:.3s;
+
+}
+
+.veg-card:hover{
+
+transform:
+translateY(-8px);
+
+}
+
+.veg-card img{
+
+width:100%;
+height:250px;
+
+object-fit:cover;
+
+}
+
+.veg-content{
+padding:24px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+.sidebar{
+display:none;
+}
+
+.main-content{
+
+margin-left:0;
+
+padding:15px;
+
+}
+
+.top-navbar{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.search-box{
+width:100%;
+}
+
+.hero{
+padding:25px;
+}
+
+.hero h1{
+font-size:28px;
+}
+
+.hero-profile{
+flex-direction:column;
+text-align:center;
+}
+
+}
+.notification-popup{
+
+position:absolute;
+
+top:80px;
+right:30px;
+
+width:350px;
+max-height:400px;
+
+overflow-y:auto;
+
+background:#fff;
+
+border-radius:20px;
+
+padding:20px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.15);
+
+display:none;
+
+z-index:999;
+
+}
+
+.notification-item{
+
+padding:12px;
+
+border-bottom:
+1px solid #eee;
+
+}
+
+.notification-item:last-child{
+
+border-bottom:none;
+
+}
+
+.notification-item p{
+
+margin:0;
+font-size:14px;
+
+}
+
+.notification-item small{
+
+color:#777;
+
+}
+
+.notification-wrapper{
+
+position:relative;
+
+}
+
+.notification-dropdown{
+
+position:absolute;
+
+top:70px;
+right:0;
+
+width:350px;
+max-height:400px;
+
+overflow-y:auto;
+
+background:#fff;
+
+border-radius:20px;
+
+padding:20px;
+
+box-shadow:
+0 10px 30px
+rgba(0,0,0,.15);
+
+display:none;
+
+z-index:9999;
+
+}
+
+.notification-item{
+
+padding:12px;
+
+border-radius:12px;
+
+background:#f8f9fa;
+
+margin-bottom:10px;
+
+transition:.3s;
+
+}
+
+.notification-item:hover{
+
+background:#e9ecef;
+
+}
+
+.notification-item h6{
+
+font-size:15px;
+margin-bottom:5px;
+
+}
+
+.notification-item p{
+
+margin:0;
+font-size:13px;
+color:#666;
+
+}
+
+.notification-time{
+
+font-size:12px;
+color:#999;
+
+}
+
+</style>
+
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="logo-box">
+
+<h2>
+🌱 Farm2Hotel
+</h2>
+
+<p>
+Farmer Dashboard
+</p>
+
+</div>
+
+<ul class="sidebar-menu">
+
+<li>
+<a href="farmer-dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+Dashboard
+
+</a>
+</li>
+
+<li>
+<a href="add-vegetables.html">
+
+<i class="fa-solid fa-seedling"></i>
+Add Vegetables
+
+</a>
+</li>
+
+<li>
+<a href="my-listings.html">
+
+<i class="fa-solid fa-box"></i>
+My Listings
+
+</a>
+</li>
+
+<li>
+<a href="farmer-orders.html">
+
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+
+</a>
+</li>
+
+<li>
+<a href="analytics.html">
+
+<i class="fa-solid fa-chart-column"></i>
+Analytics
+
+</a>
+</li>
+
+<li>
+<a href="nearby-hotels.html">
+
+<i class="fa-solid fa-location-dot"></i>
+Nearby Hotels
+
+</a>
+</li>
+
+<li>
+<a href="revenue.html">
+<i class="fa-solid fa-wallet"></i>
+Revenue
+
+</a>
+</li>
+
+<li>
+<a href="messages.html">
+
+<i class="fa-solid fa-message"></i>
+Messages
+
+</a>
+</li>
+
+<li>
+<a href="notifications.html">
+
+<i class="fa-solid fa-bell"></i>
+Notifications
+
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+Profile
+
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="logout()">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+
+</a>
+</li>
+
+</ul>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main-content">
+
+<!-- NAVBAR -->
+
+<div class="top-navbar">
+
+<div class="search-box">
+
+<i class="fa-solid fa-search"></i>
+
+<input
+type="text"
+id="searchInput"
+placeholder=
+"Search vegetables...">
+
+</div>
+
+<div class="nav-right">
+
+<div class="notification-wrapper">
+
+<div
+class="notification-box"
+onclick="toggleNotifications()">
+
+<i class="fa-solid fa-bell"></i>
+
+<span id="notificationCount">
+0
+</span>
+
+</div>
+
+<div
+id="notificationDropdown"
+class="notification-dropdown">
+
+<h6 class="mb-3">
+🔔 Notifications
+</h6>
+
+<!-- RESET BUTTON -->
+
+<button
+class="btn btn-danger btn-sm w-100 mb-3"
+onclick="clearNotifications()">
+
+🗑 Reset Notifications
+
+</button>
+
+<!-- NOTIFICATION LIST -->
+
+<div id="notificationList">
+
+<p class="text-muted">
+No notifications
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<img
+id="topProfile"
+src=
+"https://ui-avatars.com/api/?name=Farmer&background=198754&color=fff"
+class="top-profile">
+
+</div>
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-profile">
+
+<img
+id="farmerProfile"
+src=
+"https://ui-avatars.com/api/?name=Farmer&background=198754&color=fff">
+
+<div>
+
+<h1 id="welcomeText">
+
+Welcome Back 👋
+
+</h1>
+
+<p id="farmInfo">
+
+Loading Farmer Details...
+
+</p>
+
+<div class="badges">
+
+<span>
+✅ Verified Farmer
+</span>
+
+<span>
+🌱 Startup Seller
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="weather-card">
+
+<h4>
+🌤 Farm Status
+</h4>
+
+<p>
+Your farm performance is improving.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- KPI -->
+
+<section class="stats">
+
+<div class="row g-4">
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stat-card">
+
+<i class="fa-solid fa-seedling"></i>
+
+<h2 id="activeListings">
+0
+</h2>
+
+<p>
+Active Listings
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stat-card">
+
+<i class="fa-solid fa-triangle-exclamation text-danger"></i>
+
+<h2 id="lowStock">
+0
+</h2>
+
+<p>
+Low Stock Items
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stat-card">
+
+<i class="fa-solid fa-boxes-stacked text-primary"></i>
+
+<h2 id="totalStock">
+0 KG
+</h2>
+
+<p>
+Available Stock
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stat-card">
+
+<i class="fa-solid fa-indian-rupee-sign text-success"></i>
+
+<h2 id="avgPrice">
+₹0
+</h2>
+
+<p>
+Average Price
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LOW STOCK -->
+
+<div class="alert-box mt-4">
+
+<h4 class="mb-3">
+⚠️ Low Stock Alerts
+</h4>
+
+<div id="lowStockContainer">
+
+<p>
+No low stock alerts
+</p>
+
+</div>
+
+</div>
+
+
+<!-- VEGETABLE LIST -->
+
+<section
+id="myVegetables"
+class="mt-5">
+
+<div class="section-header">
+
+<h3>
+My Vegetable Listings 🌱
+</h3>
+
+</div>
+
+<div
+class="row"
+id="vegetableList">
+
+</div>
+
+</section>
+
+<!-- NEARBY HOTELS -->
+
+<section class="mt-5">
+
+<div class="section-header">
+
+<h3>
+🏨 Nearby Hotels
+</h3>
+
+</div>
+
+<div
+class="row"
+id="nearbyHotelsList">
+
+</div>
+
+</section>
+
+
+<!-- RECENT ORDERS -->
+
+<section
+id="ordersSection"
+class="mt-5">
+
+
+<div class="section-header">
+
+<h3>
+Recent Hotel Orders 🏨
+</h3>
+
+</div>
+
+<div
+class="row"
+id="ordersList">
+
+</div>
+
+</section>
+
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+<script>
+
+// ==========================
+// LOGIN CHECK
+// ==========================
+
+const loggedFarmer =
+JSON.parse(
+localStorage.getItem(
+"farmer"
+)
+);
+
+if(!loggedFarmer){
+
+window.location.href =
+"./farmer-login.html";
+
+}
+
+
+// ==========================
+// PAGE LOAD
+// ==========================
+
+
+
+// ==========================
+// FARMER INFO
+// ==========================
+
+// ==========================
+// FARMER INFO
+// ==========================
+
+async function loadFarmerInfo(){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/farmers/profile/${loggedFarmer.id}`
+
+);
+
+const farmer =
+await response.json();
+
+console.log("Farmer Data:", farmer);
+console.log("Profile Image:", farmer.profile_image);
+
+// Welcome text
+document
+.getElementById(
+"welcomeText"
+)
+.innerText =
+
+`Welcome Back, ${farmer.full_name} 👋`;
+
+
+// Farm info
+document
+.getElementById(
+"farmInfo"
+)
+.innerText =
+
+`${farmer.village}, ${farmer.district}`;
+
+
+
+// ======================
+// PROFILE IMAGE FIX
+// ======================
+
+let imageUrl =
+
+`https://ui-avatars.com/api/?name=${encodeURIComponent(
+farmer.full_name
+)}&background=198754&color=fff`;
+
+
+// If image exists
+if(
+farmer.profile_image &&
+farmer.profile_image.trim() !== ""
+){
+
+// Case 1:
+// already contains
+// data:image
+if(
+farmer.profile_image.startsWith(
+"data:image"
+)
+){
+
+imageUrl =
+farmer.profile_image;
+
+}
+
+// Case 2:
+// only base64 string
+else{
+
+imageUrl =
+`data:image/jpeg;base64,${farmer.profile_image}`;
+
+}
+
+}
+
+
+// Set images
+document
+.getElementById(
+"farmerProfile"
+)
+.src =
+imageUrl;
+
+document
+.getElementById(
+"topProfile"
+)
+.src =
+imageUrl;
+
+
+// Error fallback
+document
+.getElementById(
+"farmerProfile"
+)
+.onerror =
+function(){
+
+this.src =
+`https://ui-avatars.com/api/?name=${encodeURIComponent(
+farmer.full_name
+)}&background=198754&color=fff`;
+
+};
+
+document
+.getElementById(
+"topProfile"
+)
+.onerror =
+function(){
+
+this.src =
+`https://ui-avatars.com/api/?name=${encodeURIComponent(
+farmer.full_name
+)}&background=198754&color=fff`;
+
+};
+
+}
+catch(error){
+
+console.log(
+"Farmer Info Error:",
+error
+);
+
+}
+}
+// ==========================
+// DASHBOARD API
+// ==========================
+
+async function loadDashboard() {
+
+    try {
+
+        const response =
+        await fetch(
+
+`http://localhost:5000/api/vegetables/dashboard/${loggedFarmer.id}`
+
+        );
+
+        const data =
+        await response.json();
+
+        console.log(
+            "LIVE Dashboard:",
+            data
+        );
+
+        // Active Listings
+        document
+        .getElementById(
+            "activeListings"
+        )
+        .innerText =
+        data.activeListings || 0;
+
+        // Low Stock
+        document
+        .getElementById(
+            "lowStock"
+        )
+        .innerText =
+        data.lowStock || 0;
+
+        // Available Stock
+        document
+        .getElementById(
+            "totalStock"
+        )
+        .innerText =
+        `${data.totalStock || 0} KG`;
+
+        // Avg Price
+        document
+        .getElementById(
+            "avgPrice"
+        )
+        .innerText =
+        `₹${parseFloat(
+            data.avgPrice || 0
+        ).toFixed(2)}`;
+
+    }
+
+    catch(error){
+
+        console.log(
+            "Dashboard Error:",
+            error
+        );
+
+    }
+
+}
+
+
+// ==========================
+// LOW STOCK
+// ==========================
+
+function
+loadLowStock(
+vegetables
+){
+
+let html = "";
+
+const lowStockItems =
+vegetables.filter(
+
+veg =>
+veg.quantity < 20
+
+);
+
+if(
+lowStockItems.length
+=== 0
+){
+
+html =
+`
+<div class=
+"alert alert-success">
+
+✅ All vegetables
+have good stock
+
+</div>
+`;
+
+}
+
+lowStockItems
+.forEach(veg=>{
+
+html +=
+`
+<div class=
+"alert alert-warning">
+
+<b>
+${veg.vegetable_name}
+</b>
+
+is running low
+only
+
+<b>
+${veg.quantity}
+KG
+</b>
+
+left.
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"lowStockContainer"
+)
+.innerHTML =
+html;
+
+}
+
+
+// ==========================
+// LOAD VEGETABLES
+// ==========================
+
+async function
+loadVegetables(){
+
+try{
+
+const response =
+await fetch(
+
+"http://localhost:5000/api/vegetables"
+
+);
+
+const vegetables =
+await response.json();
+
+console.log("Vegetables API:", vegetables);
+console.log("Logged Farmer:", loggedFarmer);
+
+const myVegetables =
+vegetables.filter(
+
+veg =>
+
+veg.farmer_id ==
+loggedFarmer.id
+
+);
+
+let html = "";
+
+if(
+myVegetables.length
+=== 0
+){
+
+html =
+`
+<div class=
+"col-12">
+
+<div class=
+"alert alert-warning">
+
+No Vegetables Added ❌
+
+</div>
+
+</div>
+`;
+
+}
+
+myVegetables
+.forEach(veg=>{
+
+html +=
+`
+<div class=
+"col-lg-4
+col-md-6
+mb-4">
+
+<div class=
+"veg-card">
+
+<img
+src=
+"http://localhost:5000/uploads/${veg.image}"
+
+style="
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:20px;
+"
+
+onerror=
+"this.src='https://via.placeholder.com/400x250?text=No+Image'">
+
+<div class=
+"veg-content">
+
+<h4>
+${veg.vegetable_name}
+</h4>
+
+<p>
+${veg.category}
+</p>
+
+<h5 class=
+"text-success">
+
+₹${veg.price}/KG
+
+</h5>
+
+<p>
+
+Stock:
+${veg.quantity}
+KG
+
+${
+veg.quantity < 20
+
+?
+
+`<span
+class=
+"text-danger">
+
+⚠️ Low
+
+</span>`
+
+:
+
+`<span
+class=
+"text-success">
+
+✅ Available
+
+</span>`
+
+}
+
+</p>
+
+<div class=
+"d-flex gap-2">
+
+<button
+class=
+"btn btn-warning w-100"
+
+onclick=
+"editVegetable(${veg.id})">
+
+Edit
+
+</button>
+
+<button
+class=
+"btn btn-danger w-100"
+
+onclick=
+"deleteVegetable(${veg.id})">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"vegetableList"
+)
+.innerHTML =
+html;
+
+loadLowStock(myVegetables);
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// SEARCH
+// ==========================
+
+function
+searchVegetables(){
+
+document
+.getElementById(
+"searchInput"
+)
+
+.addEventListener(
+
+"keyup",
+
+function(){
+
+const value =
+this.value
+.toLowerCase();
+
+const cards =
+document
+.querySelectorAll(
+".veg-card"
+);
+
+cards.forEach(card=>{
+
+const text =
+card.innerText
+.toLowerCase();
+
+card.parentElement
+.style.display =
+
+text.includes(value)
+
+?
+
+"block"
+
+:
+
+"none";
+
+});
+
+}
+
+);
+
+}
+
+
+// ==========================
+// DELETE
+// ==========================
+
+async function
+deleteVegetable(id){
+
+const confirmDelete =
+confirm(
+"Delete Vegetable?"
+);
+
+if(!confirmDelete)
+return;
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/vegetables/delete/${id}`,
+
+{
+method:"DELETE"
+}
+
+);
+
+const data =
+await response.json();
+
+alert(
+data.message
+);
+
+loadVegetables();
+
+loadDashboard();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// EDIT
+// ==========================
+
+async function
+editVegetable(id){
+
+const newPrice =
+prompt(
+"Enter New Price"
+);
+
+const newQuantity =
+prompt(
+"Enter New Quantity"
+);
+
+if(
+!newPrice
+||
+!newQuantity
+){
+
+return;
+
+}
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/vegetables/update/${id}`,
+
+{
+
+method:"PUT",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:
+JSON.stringify({
+
+price:
+newPrice,
+
+quantity:
+newQuantity
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+alert(
+data.message
+);
+
+loadVegetables();
+
+loadDashboard();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+// ==========================
+// LOGOUT
+// ==========================
+
+function logout(){
+
+localStorage.removeItem(
+"farmer"
+);
+
+window.location.href =
+"./farmer-login.html";
+
+}
+
+async function loadNotificationCount(){
+
+try{
+
+const response =
+await fetch(
+`http://localhost:5000/api/notifications/${loggedFarmer.id}`
+);
+
+const notifications =
+await response.json();
+
+const unreadCount =
+notifications.filter(
+item => item.is_read == 0
+).length;
+
+document
+.getElementById(
+"notificationCount"
+)
+.innerText =
+unreadCount;
+
+}
+catch(error){
+
+console.log(
+"Notification Error:",
+error
+);
+
+}
+
+}
+// ==========================
+// LOAD LIVE HOTEL ORDERS
+// ==========================
+
+async function
+loadOrders(){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/orders/farmer/${loggedFarmer.id}`
+
+);
+
+const orders =
+await response.json();
+
+console.log(
+"Orders:",
+orders
+);
+
+let html = "";
+
+if(
+orders.length === 0
+){
+
+html =
+`
+<div class="col-12">
+
+<div class="alert alert-warning">
+
+No Hotel Orders Yet ❌
+
+</div>
+
+</div>
+`;
+
+}
+
+orders.forEach(order=>{
+
+let badgeColor =
+"warning";
+
+if(
+order.order_status
+=== "Accepted"
+){
+
+badgeColor =
+"success";
+
+}
+
+if(
+order.order_status
+=== "Rejected"
+){
+
+badgeColor =
+"danger";
+
+}
+
+html +=
+`
+<div class="col-lg-4 col-md-6 mb-4">
+
+<div class="stat-card">
+
+<h5>
+
+🏨
+${order.business_name}
+
+</h5>
+
+<p>
+
+🥬
+${order.vegetable_name}
+
+</p>
+
+<p>
+
+📦
+${order.quantity}
+KG
+
+</p>
+
+<p>
+
+💰 ₹
+${order.total_amount}
+
+</p>
+
+<span
+class=
+"badge bg-${badgeColor}">
+
+${order.order_status}
+
+</span>
+
+<div
+class=
+"d-flex gap-2 mt-3">
+
+<button
+class=
+"btn btn-success w-100"
+
+onclick=
+"acceptOrder(${order.id})">
+
+Accept
+
+</button>
+
+<button
+class=
+"btn btn-danger w-100"
+
+onclick=
+"rejectOrder(${order.id})">
+
+Reject
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"ordersList"
+)
+.innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+async function
+acceptOrder(id){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/orders/accept/${id}`,
+
+{
+method:"PUT"
+}
+
+);
+
+const data =
+await response.json();
+
+alert(
+data.message
+);
+
+loadOrders();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+async function
+rejectOrder(id){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/orders/reject/${id}`,
+
+{
+method:"PUT"
+}
+
+);
+
+const data =
+await response.json();
+
+alert(
+data.message
+);
+
+loadOrders();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+// ==========================
+// SHOW NOTIFICATIONS
+// ==========================
+
+async function
+toggleNotifications(){
+
+const dropdown =
+document.getElementById(
+"notificationDropdown"
+);
+
+// Toggle
+if(
+dropdown.style.display
+=== "block"
+){
+
+dropdown.style.display =
+"none";
+
+return;
+
+}
+
+dropdown.style.display =
+"block";
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/notifications/${loggedFarmer.id}`
+
+);
+
+const notifications =
+await response.json();
+
+console.log(
+"Notifications:",
+notifications
+);
+
+let html = "";
+
+if(
+notifications.length === 0
+){
+
+html =
+`
+<p class="text-muted">
+No Notifications Yet
+</p>
+`;
+
+}
+
+notifications.forEach(item=>{
+
+html +=
+`
+<div class=
+"notification-item">
+
+<h6>
+
+🔔 Notification
+
+</h6>
+
+<p>
+
+${item.message}
+
+</p>
+
+<div class=
+"notification-time">
+
+${new Date(
+item.created_at
+).toLocaleString()}
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"notificationList"
+)
+.innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(
+"Notification Error:",
+error
+);
+
+}
+
+}
+
+// ==========================
+// LOAD NEARBY HOTELS
+// ==========================
+
+async function
+loadNearbyHotels(){
+
+try{
+
+const response =
+await fetch(
+
+`http://localhost:5000/api/farmers/nearby-hotels/${loggedFarmer.id}`
+
+);
+
+const hotels =
+await response.json();
+
+console.log(
+"Nearby Hotels:",
+hotels
+);
+
+let html = "";
+
+if(
+hotels.length === 0
+){
+
+html =
+`
+<div class="col-12">
+
+<div class="alert alert-warning">
+
+No Nearby Hotels Found ❌
+
+</div>
+
+</div>
+`;
+
+}
+
+hotels.forEach(hotel=>{
+
+html +=
+`
+<div class=
+"col-lg-4
+col-md-6
+mb-4">
+
+<div class=
+"stat-card">
+
+<img
+src=
+"https://ui-avatars.com/api/?name=${hotel.business_name}"
+
+style="
+width:70px;
+height:70px;
+border-radius:50%;
+margin-bottom:15px;
+">
+
+<h4>
+
+🏨
+${hotel.business_name}
+
+</h4>
+
+<p>
+
+👤
+${hotel.owner_name}
+
+</p>
+
+<p>
+
+📍
+${hotel.city}
+
+</p>
+
+<p>
+
+📞
+${hotel.phone}
+
+</p>
+
+<button
+class=
+"btn btn-success w-100 rounded-pill">
+
+Contact Hotel
+
+</button>
+
+</div>
+
+</div>
+`;
+
+});
+
+document
+.getElementById(
+"nearbyHotelsList"
+)
+.innerHTML =
+html;
+
+}
+catch(error){
+
+console.log(
+"Nearby Hotel Error:",
+error
+);
+
+}
+
+}
+
+async function
+deleteNotification(id){
+
+try{
+
+await fetch(
+
+`http://localhost:5000/api/notifications/delete/${id}`,
+
+{
+method:"DELETE"
+}
+
+);
+
+toggleNotifications();
+loadNotificationCount();
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+window.onload = function () {
+
+loadFarmerInfo();
+loadDashboard();
+loadVegetables();
+loadOrders();
+loadNearbyHotels();
+searchVegetables();
+loadNotificationCount();
+
+setInterval(() => {
+
+loadDashboard();
+loadVegetables();
+loadOrders();
+loadNearbyHotels();
+loadNotificationCount();
+
+}, 2000);
+
+};
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script
+src=
+"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+</body>
+</html>

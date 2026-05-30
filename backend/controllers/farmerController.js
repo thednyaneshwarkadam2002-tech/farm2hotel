@@ -139,93 +139,99 @@ const registerFarmer = async (req, res) => {
 // LOGIN FARMER
 // ====================
 
+// ====================
+// LOGIN FARMER
+// ====================
+
 const loginFarmer = (req, res) => {
 
-    const {
-        mobile,
-        password
-    } = req.body;
+console.log("BODY:", req.body);
 
-    const query = `
-    SELECT * FROM farmers
-    WHERE mobile = ?
-    `;
+const {
+mobile,
+password
+} = req.body;
 
-    db.query(
+const query = `
+SELECT * FROM farmers
+WHERE mobile = ?
+`;
 
-        query,
+db.query(
 
-        [mobile],
+query,
+[mobile],
 
-        async (err, result) => {
+async (err, result) => {
 
-            if (err) {
+if (err) {
 
-                console.log(err);
+console.log("DB ERROR:", err);
 
-                return res.status(500)
-                    .json({
-                        message:
-                            "Database Error"
-                    });
+return res.status(500)
+.json({
+message:"Database Error"
+});
 
-            }
+}
 
-            if (result.length === 0) {
+console.log("RESULT:", result);
 
-                return res.status(404)
-                    .json({
-                        message:
-                            "Farmer not found"
-                    });
+if(result.length === 0){
 
-            }
+return res.status(404)
+.json({
+message:"Farmer not found"
+});
 
-            const farmer = result[0];
+}
 
-            const isMatch =
-                await bcrypt.compare(
-                    password,
-                    farmer.password
-                );
+const farmer = result[0];
 
-            if (!isMatch) {
+console.log(
+"DB Password:",
+farmer.password
+);
 
-                return res.status(401)
-                    .json({
-                        message:
-                            "Wrong Password"
-                    });
+const isMatch =
+await bcrypt.compare(
+password,
+farmer.password
+);
 
-            }
+console.log(
+"Password Match:",
+isMatch
+);
 
-            res.status(200)
-                .json({
+if(!isMatch){
 
-                    message:
-                        "Login Successful ✅",
+return res.status(401)
+.json({
+message:
+"Wrong Password"
+});
 
-                    farmer: {
+}
 
-                        id:
-                            farmer.id,
+res.status(200).json({
 
-                        full_name:
-                            farmer.full_name,
+message:
+"Login Successful ✅",
 
-                        mobile:
-                            farmer.mobile
+farmer:{
+id: farmer.id,
+full_name: farmer.full_name,
+mobile: farmer.mobile
+}
 
-                    }
+});
 
-                });
+}
 
-        }
-
-    );
+);
 
 };
-
 
 // ====================
 // GET FARMER PROFILE

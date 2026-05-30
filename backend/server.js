@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express =
 require("express");
 
@@ -52,63 +53,47 @@ __dirname,
 )
 );
 
-const marketRoutes =
-require("./routes/marketRoutes");
-
-app.use(
-"/api/market",
-marketRoutes
-);
-
 
 // ======================
 // ROUTES IMPORT
 // ======================
 
+const marketRoutes =
+require("./routes/marketRoutes");
+
 const vegetableRoutes =
-require(
-"./routes/vegetableRoutes"
-);
+require("./routes/vegetableRoutes");
 
 const farmerRoutes =
-require(
-"./routes/farmerRoutes"
-);
+require("./routes/farmerRoutes");
 
 const buyerRoutes =
-require(
-"./routes/buyerRoutes"
-);
+require("./routes/buyerRoutes");
 
 const orderRoutes =
-require(
-"./routes/orderRoutes"
-);
+require("./routes/orderRoutes");
 
 const messageRoutes =
-require(
-"./routes/messageRoutes"
-);
+require("./routes/messageRoutes");
 
 const notificationRoutes =
-require(
-"./routes/notificationRoutes"
-);
+require("./routes/notificationRoutes");
 
 const cartRoutes =
-require(
-"./routes/cartRoutes"
-);
+require("./routes/cartRoutes");
 
 const wishlistRoutes =
-require(
-"./routes/wishlistRoutes"
-);
+require("./routes/wishlistRoutes");
 
 
 // ======================
 // API ROUTES
 // ======================
+
+app.use(
+"/api/market",
+marketRoutes
+);
 
 app.use(
 "/api/vegetables",
@@ -133,7 +118,6 @@ orderRoutes
 app.use(
 "/api/messages",
 messageRoutes
-
 );
 
 app.use(
@@ -188,6 +172,8 @@ db.query(
 
 if(err){
 
+console.log(err);
+
 return res
 .status(500)
 .json({
@@ -209,6 +195,8 @@ db.query(
 (err,buyerResult)=>{
 
 if(err){
+
+console.log(err);
 
 return res
 .status(500)
@@ -232,6 +220,8 @@ db.query(
 
 if(err){
 
+console.log(err);
+
 return res
 .status(500)
 .json({
@@ -253,6 +243,8 @@ db.query(
 (err,cityResult)=>{
 
 if(err){
+
+console.log(err);
 
 return res
 .status(500)
@@ -291,7 +283,11 @@ const io =
 new Server(server,{
 
 cors:{
-origin:"*"
+origin:"*",
+methods:[
+"GET",
+"POST"
+]
 }
 
 });
@@ -359,6 +355,8 @@ console.log(
 
 );
 
+
+// DISCONNECT
 
 socket.on(
 

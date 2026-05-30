@@ -607,7 +607,7 @@ try{
 const response =
 await fetch(
 
-"http://localhost:5000/api/vegetables"
+"http://farm2hotel.onrender.com/api/vegetables"
 
 );
 
@@ -683,7 +683,7 @@ mb-4">
 
 <img
 src=
-"http://localhost:5000/uploads/${veg.image}"
+"http://farm2hotel.onrender.com/uploads/${veg.image}"
 
 onerror=
 "this.src='https://via.placeholder.com/400x250?text=No+Image'">
@@ -869,7 +869,7 @@ try{
 
 await fetch(
 
-`http://localhost:5000/api/vegetables/delete/${id}`,
+`http://farm2hotel.onrender.com/api/vegetables/delete/${id}`,
 
 {
 method:"DELETE"
@@ -916,7 +916,7 @@ try{
 
 await fetch(
 
-`http://localhost:5000/api/vegetables/update/${id}`,
+`http://farm2hotel.onrender.com/api/vegetables/update/${id}`,
 
 {
 

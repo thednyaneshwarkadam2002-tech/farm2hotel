@@ -654,7 +654,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/wishlist/${loggedBuyer.id}`
+`http://farm2hotel.onrender.com/api/wishlist/${loggedBuyer.id}`
 
 );
 
@@ -751,7 +751,7 @@ mb-4">
 
 <img
 src=
-"http://localhost:5000/uploads/${item.image}"
+"http://farm2hotel.onrender.com/uploads/${item.image}"
 
 class=
 "product-image"
@@ -877,7 +877,7 @@ try{
 const response =
 await fetch(
 
-"http://localhost:5000/api/cart/add",
+"http://farm2hotel.onrender.com/api/cart/add",
 
 {
 
@@ -956,7 +956,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/wishlist/delete/${id}`,
+`http://farm2hotel.onrender.com/api/wishlist/delete/${id}`,
 
 {
 method:"DELETE"

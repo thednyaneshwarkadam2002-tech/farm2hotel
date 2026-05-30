@@ -1174,7 +1174,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/farmers/profile/${loggedFarmer.id}`
+`http://farm2hotel.onrender.com/api/farmers/profile/${loggedFarmer.id}`
 
 );
 
@@ -1314,7 +1314,7 @@ async function loadDashboard() {
         const response =
         await fetch(
 
-`http://localhost:5000/api/vegetables/dashboard/${loggedFarmer.id}`
+`http://farm2hotel.onrender.com/api/vegetables/dashboard/${loggedFarmer.id}`
 
         );
 
@@ -1460,7 +1460,7 @@ try{
 const response =
 await fetch(
 
-"http://localhost:5000/api/vegetables"
+"http://farm2hotel.onrender.com/api/vegetables"
 
 );
 
@@ -1519,7 +1519,7 @@ mb-4">
 
 <img
 src=
-"http://localhost:5000/uploads/${veg.image}"
+"http://farm2hotel.onrender.com/uploads/${veg.image}"
 
 style="
 width:100%;
@@ -1713,7 +1713,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/vegetables/delete/${id}`,
+`http://farm2hotel.onrender.com/api/vegetables/delete/${id}`,
 
 {
 method:"DELETE"
@@ -1774,7 +1774,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/vegetables/update/${id}`,
+`http://farm2hotel.onrender.com/api/vegetables/update/${id}`,
 
 {
 
@@ -1842,7 +1842,7 @@ try{
 
 const response =
 await fetch(
-`http://localhost:5000/api/notifications/${loggedFarmer.id}`
+`http://farm2hotel.onrender.com/api/notifications/${loggedFarmer.id}`
 );
 
 const notifications =
@@ -1883,7 +1883,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/orders/farmer/${loggedFarmer.id}`
+`http://farm2hotel.onrender.com/api/orders/farmer/${loggedFarmer.id}`
 
 );
 
@@ -2043,7 +2043,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/orders/accept/${id}`,
+`http://farm2hotel.onrender.com/api/orders/accept/${id}`,
 
 {
 method:"PUT"
@@ -2077,7 +2077,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/orders/reject/${id}`,
+`http://farm2hotel.onrender.com/api/orders/reject/${id}`,
 
 {
 method:"PUT"
@@ -2136,7 +2136,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/notifications/${loggedFarmer.id}`
+`http://farm2hotel.onrender.com/api/notifications/${loggedFarmer.id}`
 
 );
 
@@ -2227,7 +2227,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/farmers/nearby-hotels/${loggedFarmer.id}`
+`http://farm2hotel.onrender.com/api/farmers/nearby-hotels/${loggedFarmer.id}`
 
 );
 
@@ -2352,7 +2352,7 @@ try{
 
 await fetch(
 
-`http://localhost:5000/api/notifications/delete/${id}`,
+`http://farm2hotel.onrender.com/api/notifications/delete/${id}`,
 
 {
 method:"DELETE"

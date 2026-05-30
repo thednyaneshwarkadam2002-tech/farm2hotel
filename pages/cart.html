@@ -683,7 +683,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/cart/${loggedBuyer.id}`
+`http://farm2hotel.onrender.com/api/cart/${loggedBuyer.id}`
 
 );
 
@@ -800,7 +800,7 @@ html +=
 
 <img
 src=
-"http://localhost:5000/uploads/${item.image}"
+"http://farm2hotel.onrender.com/uploads/${item.image}"
 
 class=
 "cart-image"
@@ -988,7 +988,7 @@ try{
 
 await fetch(
 
-`http://localhost:5000/api/cart/update/${id}`,
+`http://farm2hotel.onrender.com/api/cart/update/${id}`,
 
 {
 
@@ -1045,7 +1045,7 @@ try{
 
 await fetch(
 
-`http://localhost:5000/api/cart/delete/${id}`,
+`http://farm2hotel.onrender.com/api/cart/delete/${id}`,
 
 {
 method:"DELETE"

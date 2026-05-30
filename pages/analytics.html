@@ -687,7 +687,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/orders/dashboard/${loggedFarmer.id}`
+`https://farm2hotel.onrender.com/api/orders/dashboard/${loggedFarmer.id}`
 
 );
 
@@ -962,7 +962,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/farmers/profile/${loggedFarmer.id}`
+`https://farm2hotel.onrender.com/api/farmers/profile/${loggedFarmer.id}`
 
 );
 
@@ -975,7 +975,7 @@ farmer.profile_image
 
 ?
 
-`http://localhost:5000/uploads/${farmer.profile_image}`
+`https://farm2hotel.onrender.com/uploads/${farmer.profile_image}`
 
 :
 

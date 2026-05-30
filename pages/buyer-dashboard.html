@@ -1149,7 +1149,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/buyers/dashboard/${loggedBuyer.id}`
+`https://farm2hotel.onrender.com/api/buyers/dashboard/${loggedBuyer.id}`
 
 );
 
@@ -1228,7 +1228,7 @@ try{
 const response =
 await fetch(
 
-"http://localhost:5000/api/vegetables"
+"https://farm2hotel.onrender.com/api/vegetables"
 
 );
 
@@ -1264,7 +1264,7 @@ mb-4">
 
 <img
 src=
-"http://localhost:5000/uploads/${veg.image}"
+"https://farm2hotel.onrender.com/uploads/${veg.image}"
 
 style="
 height:250px;
@@ -1467,7 +1467,7 @@ try{
 const response =
 await fetch(
 
-"http://localhost:5000/api/cart/add",
+"https://farm2hotel.onrender.com/api/cart/add",
 
 {
 
@@ -1540,7 +1540,7 @@ try{
 const response =
 await fetch(
 
-"http://localhost:5000/api/wishlist/add",
+"https://farm2hotel.onrender.com/api/wishlist/add",
 
 {
 
@@ -1600,7 +1600,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/notifications/${loggedBuyer.id}`
+`https://farm2hotel.onrender.com/api/notifications/${loggedBuyer.id}`
 
 );
 
@@ -1665,7 +1665,7 @@ try{
 
 const response =
 await fetch(
-"http://localhost:5000/api/vegetables"
+"http://farm2hotel.onrender.com/api/vegetables"
 );
 
 const vegetables =
@@ -1695,7 +1695,7 @@ html +=
 
 <img
 src=
-"http://localhost:5000/uploads/${veg.image}"
+"http://farm2hotel.onrender.com/uploads/${veg.image}"
 
 style="
 height:220px;
@@ -1768,7 +1768,7 @@ try{
 const response =
 await fetch(
 
-"http://localhost:5000/api/farmers/nearby"
+"http://farm2hotel.onrender.com/api/farmers/nearby"
 
 );
 
@@ -1798,7 +1798,7 @@ html +=
 
 <img
 src=
-"http://localhost:5000/uploads/${farmer.profile_image}"
+"http://farm2hotel.onrender.com/uploads/${farmer.profile_image}"
 
 class=
 "farmer-img"
@@ -1865,7 +1865,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/cart/${loggedBuyer.id}`
+`http://farm2hotel.onrender.com/api/cart/${loggedBuyer.id}`
 
 );
 
@@ -1901,7 +1901,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/orders/active/${loggedBuyer.id}`
+`http://farm2hotel.onrender.com/api/orders/active/${loggedBuyer.id}`
 
 );
 
@@ -2050,7 +2050,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/cart/${loggedBuyer.id}`
+`http://farm2hotel.onrender.com/api/cart/${loggedBuyer.id}`
 
 );
 
@@ -2230,7 +2230,7 @@ try{
 
 await fetch(
 
-`http://localhost:5000/api/cart/update/${id}`,
+`http://farm2hotel.onrender.com/api/cart/update/${id}`,
 
 {
 
@@ -2277,7 +2277,7 @@ try{
 
 await fetch(
 
-`http://localhost:5000/api/cart/delete/${id}`,
+`http://farm2hotel.onrender.com/api/cart/delete/${id}`,
 
 {
 method:"DELETE"
@@ -2349,7 +2349,7 @@ try{
 const response =
 await fetch(
 
-`http://localhost:5000/api/notifications/${loggedBuyer.id}`
+`http://farm2hotel.onrender.com/api/notifications/${loggedBuyer.id}`
 
 );
 
@@ -2433,7 +2433,7 @@ function openNotification(notification){
 
 fetch(
 
-`http://localhost:5000/api/notifications/read/${notification.id}`,
+`http://farm2hotel.onrender.com/api/notifications/read/${notification.id}`,
 
 {
 method:"PUT"

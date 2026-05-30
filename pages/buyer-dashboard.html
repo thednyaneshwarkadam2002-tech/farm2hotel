@@ -1665,7 +1665,7 @@ try{
 
 const response =
 await fetch(
-"http://farm2hotel.onrender.com/api/vegetables"
+"https://farm2hotel.onrender.com/api/vegetables"
 );
 
 const vegetables =
@@ -1695,7 +1695,7 @@ html +=
 
 <img
 src=
-"http://farm2hotel.onrender.com/uploads/${veg.image}"
+"https://farm2hotel.onrender.com/uploads/${veg.image}"
 
 style="
 height:220px;
@@ -1768,7 +1768,7 @@ try{
 const response =
 await fetch(
 
-"http://farm2hotel.onrender.com/api/farmers/nearby"
+"https://farm2hotel.onrender.com/api/farmers/nearby"
 
 );
 
@@ -1798,7 +1798,7 @@ html +=
 
 <img
 src=
-"http://farm2hotel.onrender.com/uploads/${farmer.profile_image}"
+"https://farm2hotel.onrender.com/uploads/${farmer.profile_image}"
 
 class=
 "farmer-img"
@@ -1865,7 +1865,7 @@ try{
 const response =
 await fetch(
 
-`http://farm2hotel.onrender.com/api/cart/${loggedBuyer.id}`
+`https://farm2hotel.onrender.com/api/cart/${loggedBuyer.id}`
 
 );
 
@@ -1901,7 +1901,7 @@ try{
 const response =
 await fetch(
 
-`http://farm2hotel.onrender.com/api/orders/active/${loggedBuyer.id}`
+`https://farm2hotel.onrender.com/api/orders/active/${loggedBuyer.id}`
 
 );
 
@@ -2050,7 +2050,7 @@ try{
 const response =
 await fetch(
 
-`http://farm2hotel.onrender.com/api/cart/${loggedBuyer.id}`
+`https://farm2hotel.onrender.com/api/cart/${loggedBuyer.id}`
 
 );
 
@@ -2230,7 +2230,7 @@ try{
 
 await fetch(
 
-`http://farm2hotel.onrender.com/api/cart/update/${id}`,
+`https://farm2hotel.onrender.com/api/cart/update/${id}`,
 
 {
 
@@ -2277,7 +2277,7 @@ try{
 
 await fetch(
 
-`http://farm2hotel.onrender.com/api/cart/delete/${id}`,
+`https://farm2hotel.onrender.com/api/cart/delete/${id}`,
 
 {
 method:"DELETE"
@@ -2349,7 +2349,7 @@ try{
 const response =
 await fetch(
 
-`http://farm2hotel.onrender.com/api/notifications/${loggedBuyer.id}`
+`https://farm2hotel.onrender.com/api/notifications/${loggedBuyer.id}`
 
 );
 
@@ -2433,7 +2433,7 @@ function openNotification(notification){
 
 fetch(
 
-`http://farm2hotel.onrender.com/api/notifications/read/${notification.id}`,
+`https://farm2hotel.onrender.com/api/notifications/read/${notification.id}`,
 
 {
 method:"PUT"
